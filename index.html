@@ -1,0 +1,2535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPrep - Entry Test Platform</title>
+    <!-- Load fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lateef&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: #dcedc8;
+            min-height: 100vh;
+            color: #2e7d32;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        header {
+            background: #2E8B57;
+            padding: 15px 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(46, 139, 87, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: 700;
+            padding: 10px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .nav-menu li a:hover {
+            background: #ffffff;
+            color: #2E8B57;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        /* AdSense Container */
+        .adsense-container {
+            width: 100%;
+            max-width: 1300px;
+            height: 90px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+        }
+
+        /* Welcome Wrapper */
+        .welcome-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto 40px;
+        }
+
+        .welcome-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .welcome-header h1 {
+            font-size: 2.8em;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .welcome-header p {
+            font-size: 1.3em;
+            color: #2e7d32;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 30px;
+        }
+
+        .benefits {
+            flex: 1;
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .benefits h2 {
+            font-size: 1.6em;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .benefits ul {
+            list-style: none;
+            font-size: 1.15em;
+            color: #2e7d32;
+        }
+
+        .benefits li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .benefits li:before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: #66bb6a;
+        }
+
+        .action-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .action-area p {
+            font-size: 1.25em;
+            color: #2e7d32;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .start-test-btn {
+            background: #2e7d32;
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.35em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .start-test-btn:hover {
+            background: #1b5e20;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .start-test-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Features Section */
+        .features-section {
+            max-width: 1300px;
+            margin: 0 auto 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 30px;
+        }
+
+        .feature-box {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-box h3 {
+            font-size: 1.7em;
+            color: #2E8B57;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .feature-box p {
+            font-size: 1.15em;
+            color: #2e7d32;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-box ul {
+            list-style: none;
+            color: #2e7d32;
+            font-size: 1.15em;
+        }
+
+        .feature-box ul li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-box ul li:before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #2E8B57;
+        }
+
+        .feature-btn {
+            display: inline-block;
+            background: #2E8B57;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1.15em;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-btn:hover {
+            background: #1b5e20;
+            transform: translateY(-2px);
+        }
+
+        /* Full-width Donate Us in Desktop */
+        .donate-box {
+            grid-column: 1 / -1;
+        }
+
+        /* Categories Slider */
+        .categories-slider {
+            background: #f1f8e9;
+            border-radius: 12px;
+            padding: 0 20px;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+
+        .categories-slider.active {
+            height: 350px;
+            padding: 20px;
+        }
+
+        .categories-slider h4 {
+            font-size: 1.5em;
+            color: #2E8B57;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .categories-slider p {
+            font-size: 1.15em;
+            color: #2e7d32;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* Guide Slider */
+        .guide-slider {
+            background: #f1f8e9;
+            border-radius: 12px;
+            padding: 0 20px;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+
+        .guide-slider.active {
+            height: 300px;
+            padding: 20px;
+        }
+
+        .guide-slider h4 {
+            font-size: 1.5em;
+            color: #2E8B57;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .guide-slider p {
+            font-size: 1.15em;
+            color: #2e7d32;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* Donation Form Slider */
+        .donation-form {
+            background: #f1f8e9;
+            border-radius: 12px;
+            padding: 0 20px;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+
+        .donation-form.active {
+            height: 400px;
+            padding: 20px;
+        }
+
+        .donation-form h4 {
+            font-size: 1.5em;
+            color: #2E8B57;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .donation-option {
+            margin-bottom: 20px;
+        }
+
+        .donation-option p {
+            font-size: 1.15em;
+            color: #2e7d32;
+            margin: 5px 0;
+        }
+
+        .donation-option strong {
+            color: #2E8B57;
+        }
+
+        /* Resources Container */
+        .resources-wrapper {
+            display: none;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .resources-wrapper.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .resources-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .resources-header h1 {
+            font-size: 2.8em;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .resources-header p {
+            font-size: 1.3em;
+            color: #2e7d32;
+            line-height: 1.6;
+        }
+
+        .resources-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .resources-section {
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .resources-section h2 {
+            font-size: 1.6em;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .resources-section p,
+        .resources-section ul {
+            font-size: 1.15em;
+            color: #2e7d32;
+            line-height: 1.6;
+        }
+
+        .resources-section ul {
+            list-style: none;
+        }
+
+        .resources-section ul li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .resources-section ul li:before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: #66bb6a;
+        }
+
+        /* About Us Container */
+        .about-wrapper {
+            display: none;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .about-wrapper.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .about-content h1 {
+            font-size: 2.8em;
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 1.6em;
+            color: #2e7d32;
+            margin: 20px 0 10px;
+        }
+
+        .about-content p,
+        .about-content ul {
+            font-size: 1.15em;
+            color: #2e7d32;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .about-content ul li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .about-content ul li:before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: #66bb6a;
+        }
+
+        /* Contact Us Container */
+        .contact-wrapper {
+            display: none;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .contact-wrapper.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .contact-content h1 {
+            font-size: 2.8em;
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-content h2 {
+            font-size: 1.6em;
+            color: #2e7d32;
+            margin: 20px 0 10px;
+        }
+
+        .contact-content p,
+        .contact-content ul {
+            font-size: 1.15em;
+            color: #2e7d32;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .contact-content ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .contact-content ul li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .contact-content ul li:before {
+            content: '➔';
+            position: absolute;
+            left: 0;
+            color: #66bb6a;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2E8B57;
+            padding: 40px;
+            color: #ffffff;
+            transition: background 0.3s ease;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin: 12px 0;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.15em;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #dcedc8;
+            padding-left: 5px;
+        }
+
+        .footer-section p {
+            font-size: 1.15em;
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #ffffff;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        /* Quiz Container Styles */
+        .quiz-container-wrapper {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #F7F9FC;
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #2E8B57;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .close-quiz {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Quiz Generator Styles */
+        .quiz-body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #F7F9FC;
+            color: #2D3748;
+            line-height: 1.6;
+        }
+        .quiz-body h1, .quiz-body h2 {
+            color: #1A3C34;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .quiz-body h1 { font-size: clamp(24px, 5vw, 32px); }
+        .quiz-body h2.enter-details { 
+            color: #008000; 
+            font-size: clamp(20px, 4vw, 28px); 
+            margin: 0 auto 30px;
+            padding: 15px 20px;
+            background: #F0FFF0;
+            border: 2px solid #008000;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 128, 0, 0.1);
+            position: relative;
+            max-width: 90%;
+            display: inline-block;
+        }
+        .quiz-body h2.enter-details::before, .quiz-body h2.enter-details::after {
+            content: "";
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            border-color: #008000;
+            border-style: solid;
+            border-width: 0;
+        }
+        .quiz-body h2.enter-details::before {
+            top: -8px;
+            left: -8px;
+            border-top-width: 2px;
+            border-left-width: 2px;
+            border-top-left-radius: 8px;
+        }
+        .quiz-body h2.enter-details::after {
+            bottom: -8px;
+            right: -8px;
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+            border-bottom-right-radius: 8px;
+        }
+        .quiz-body h3.school-name { color: #1A3C34; text-align: center; font-size: clamp(18px, 3.5vw, 24px); margin-bottom: 10px; }
+        .quiz-body h4.date-heading { color: #008000; text-align: center; font-size: clamp(16px, 3vw, 20px); margin-bottom: 20px; font-weight: 500; }
+        .quiz-body .details-form .below-inputs { color: #000000; font-size: clamp(14px, 3vw, 18px); text-align: center; margin-top: 20px; }
+        .quiz-body .quiz-container, .quiz-body .details-form, .quiz-body #preview {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E2E8F0;
+            width: 100%;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .quiz-body .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #F0FFF0;
+            border-radius: 10px;
+            border-left: 5px solid #90EE90;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .quiz-body .question.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .quiz-body .question-header { font-weight: 600; font-size: clamp(14px, 3vw, 18px); margin-bottom: 12px; color: #000000; }
+        .quiz-body .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .quiz-body .options label {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            cursor: pointer;
+            font-size: clamp(14px, 3vw, 18px);
+            color: #000000;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .quiz-body .options label:hover { background-color: #E6FFE6; transform: scale(1.02); }
+        .quiz-body .options input[type="radio"]:checked + span {
+            font-weight: bold;
+            color: #008000;
+            transition: color 0.2s ease;
+        }
+        .quiz-body button {
+            background: #90EE90;
+            color: #1A3C34;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: clamp(16px, 3.5vw, 20px);
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.1s ease;
+            margin: 5px 0;
+        }
+        .quiz-body button.action-button { background: #2E8B57; color: #FFFFFF; }
+        .quiz-body button:hover { background: #77DD77; transform: translateY(-2px); }
+        .quiz-body button.action-button:hover { background: #006400; }
+        .quiz-body #result { margin-top: 25px; font-weight: 600; text-align: center; font-size: clamp(16px, 3.5vw, 20px); color: #008000; background: #F0FFF0; padding: 10px; border-radius: 8px; }
+        .quiz-body .correct { color: #008000; font-weight: bold; }
+        .quiz-body .incorrect { color: #FF0000; font-weight: bold; }
+        .quiz-body .correct-option { color: #008000; font-weight: bold; }
+        .quiz-body .wrong-selected { color: #FF0000; font-weight: bold; }
+        .quiz-body .user-answer { font-style: italic; color: #718096; font-size: clamp(12px, 2.5vw, 16px); }
+        .quiz-body .details-form label { display: block; margin: 15px 0 8px; font-weight: 500; font-size: clamp(12px, 2.5vw, 16px); color: #1A3C34; }
+        .quiz-body .details-form input, .quiz-body .details-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: clamp(12px, 2.5vw, 16px);
+            background: #F7FAFC;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .quiz-body .details-form input:hover, .quiz-body .details-form select:hover { border-color: #008000; box-shadow: 0 0 8px rgba(0, 128, 0, 0.3); }
+        .quiz-body .details-form input:focus, .quiz-body .details-form select:focus { border-color: #90EE90; outline: none; }
+        .quiz-body .details-form select {
+            appearance: none;
+            background: #F7FAFC url('data:image/svg+xml;utf8,<svg fill="%232D3748" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
+        }
+        .quiz-body .institution-input, .quiz-body #manualQuestionInput { display: none; }
+        .quiz-body #preview { margin-top: 40px; border: 2px solid #90EE90; }
+        .quiz-body #preview h2 { color: #1A3C34; margin-bottom: 30px; border-bottom: 3px solid #90EE90; padding-bottom: 12px; font-size: clamp(20px, 4vw, 28px); }
+        .quiz-body .preview-question { margin-bottom: 15px; padding: 15px; border-left: 5px solid #90EE90; background: #F0FFF0; border-radius: 10px; }
+        .quiz-body .preview-question .question-header { 
+            font-size: clamp(14px, 3.5vw, 20px);
+            font-weight: 600; 
+            color: #000000; 
+        }
+        .quiz-body .preview-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-left: 25px; }
+        .quiz-body .preview-options label { 
+            font-size: clamp(14px, 3vw, 18px);
+            color: #000000; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
+        .quiz-body .summary-info { 
+            margin-bottom: 25px; 
+            padding: 20px; 
+            background: #F0FFF0; 
+            border-radius: 10px; 
+            border: 1px solid #90EE90; 
+            font-size: clamp(16px, 3vw, 20px);
+        }
+        .quiz-body .summary-info p { 
+            margin: 10px 0; 
+            font-size: clamp(16px, 3vw, 20px); 
+            color: #000000; 
+            font-style: italic; 
+        }
+        .quiz-body .summary-info p strong { 
+            color: #000000; 
+            font-weight: 600; 
+            font-size: clamp(16px, 3vw, 20px);
+        }
+        .quiz-body .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+        .quiz-body .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .quiz-body .modal-content.pass { border: 3px solid #008000; background: #f0fff0; }
+        .quiz-body .modal-content.fail { border: 3px solid #ff0000; background: #fff0f0; }
+        .quiz-body .modal-content.pass h2 { color: #008000; font-size: clamp(20px, 4vw, 28px); }
+        .quiz-body .modal-content.fail h2 { color: #ff0000; font-size: clamp(20px, 4vw, 28px); }
+        .quiz-body .modal-content .score-display { font-size: clamp(18px, 4vw, 24px); margin: 20px 0; padding: 10px; border-radius: 5px; }
+        .quiz-body .modal-content.pass .score-display { background: #90ee90; }
+        .quiz-body .modal-content.fail .score-display { background: #ff4444; color: white; }
+        .quiz-body .modal-content .details { font-size: clamp(12px, 2.5vw, 16px); margin: 10px 0; color: #2d3748; }
+        .quiz-body .modal-content .action-buttons { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+        .quiz-body .modal-content button { background: #2E8B57; color: white; padding: 10px; }
+        .quiz-body .modal-content button:hover { background: #006400; }
+        .quiz-body .modal-content button.retry { background: #ffa500; }
+        .quiz-body .modal-content button.retry:hover { background: #ff8c00; }
+        .quiz-body .modal-content button.view-details { background: #1a3c34; }
+        .quiz-body .modal-content button.view-details:hover { background: #14332a; }
+        .quiz-body .timer { font-size: clamp(18px, 4vw, 24px); font-weight: bold; color: #FF0000; text-align: center; margin: 20px 0; padding: 10px; background: #FFF0F0; border-radius: 8px; border: 2px solid #FF0000; }
+        .quiz-body .time-up { animation: blink 1s linear infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        
+        /* Language-specific styles */
+        .quiz-body .sindhi {
+            font-family: 'Lateef', serif;
+            direction: rtl;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .quiz-body .urdu {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            direction: rtl;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        
+        /* Adjust Sindhi and Urdu font sizes specifically in preview */
+        .quiz-body #preview .sindhi {
+            font-size: 1.3em !important;
+        }
+        
+        .quiz-body #preview .urdu {
+            font-size: 1.1em !important;
+        }
+        
+        @media (max-width: 600px) {
+            .quiz-body .options, .quiz-body .preview-options {
+                grid-template-columns: 1fr;
+            }
+            .quiz-body .options label, .quiz-body .preview-options label {
+                white-space: normal;
+            }
+            .quiz-body #preview { 
+                width: 95%; 
+                margin: 20px auto; 
+                padding: 10px;
+            }
+            .quiz-body h2.enter-details {
+                padding: 12px 15px;
+                font-size: clamp(18px, 4vw, 24px);
+            }
+            .quiz-body .urdu {
+                font-size: 1.1em;
+            }
+            .quiz-body .sindhi {
+                font-size: 1.3em;
+            }
+            .quiz-body .summary-info p,
+            .quiz-body .summary-info p strong {
+                font-size: clamp(14px, 3vw, 18px);
+            }
+        }
+        
+        @media print {
+            .quiz-body body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .quiz-body .quiz-container, .quiz-body .details-form {
+                display: none;
+            }
+            .quiz-body #preview {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 10mm;
+                box-shadow: none;
+                border: none;
+                page-break-after: auto;
+            }
+            .quiz-body .preview-question {
+                page-break-inside: avoid;
+            }
+            .quiz-body button {
+                display: none;
+            }
+            .quiz-body .sindhi {
+                font-size: 1.3em !important;
+            }
+            .quiz-body .urdu {
+                font-size: 1.1em;
+            }
+        }
+
+        /* New print button style */
+        .quiz-body .print-button {
+            background: #1a3c34;
+            color: white;
+        }
+        .quiz-body .print-button:hover {
+            background: #14332a;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-section,
+            .resources-content {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .welcome-wrapper,
+            .resources-wrapper,
+            .about-wrapper,
+            .contact-wrapper {
+                padding: 20px;
+                margin: 0 auto 20px;
+            }
+
+            .welcome-header h1,
+            .resources-header h1,
+            .about-content h1,
+            .contact-content h1 {
+                font-size: 2.3em;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: #2E8B57;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
+
+            .donate-box {
+                grid-column: 1 / 1;
+            }
+
+            .adsense-container {
+                width: 100%;
+                max-width: 728px;
+                height: auto;
+                padding: 10px;
+            }
+
+            .adsense-container > div {
+                width: 100%;
+                max-width: 728px;
+                height: 90px;
+            }
+
+            .feature-box h3,
+            .resources-section h2,
+            .about-content h2,
+            .contact-content h2 {
+                font-size: 1.5em;
+            }
+
+            .footer-section h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-header p,
+            .resources-header p,
+            .about-content p,
+            .contact-content p {
+                font-size: 1.1em;
+            }
+
+            .start-test-btn {
+                padding: 12px 25px;
+                font-size: 1.2em;
+            }
+
+            .feature-box h3,
+            .resources-section h2,
+            .about-content h2,
+            .contact-content h2 {
+                font-size: 1.3em;
+            }
+
+            .donation-form h4,
+            .guide-slider h4,
+            .categories-slider h4 {
+                font-size: 1.3em;
+            }
+
+            .feature-box p,
+            .feature-box ul,
+            .feature-btn,
+            .categories-slider p,
+            .guide-slider p,
+            .donation-option p,
+            .resources-section p,
+            .resources-section ul,
+            .about-content p,
+            .about-content ul,
+            .contact-content p,
+            .contact-content ul {
+                font-size: 1em;
+            }
+
+            .footer-section h3 {
+                font-size: 1.2em;
+            }
+
+            .footer-section ul li a,
+            .footer-section p {
+                font-size: 1em;
+            }
+
+            .footer-bottom {
+                font-size: 0.95em;
+            }
+
+            .adsense-container {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">CareerPrep</div>
+            <nav>
+                <button class="menu-toggle">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="#home" id="homeBtn">Home</a></li>
+                    <li><a href="#tests">Tests</a></li>
+                    <li><a href="#resources" id="resourcesBtn">Resources</a></li>
+                    <li><a href="#about" id="aboutBtn">About Us</a></li>
+                    <li><a href="#contact" id="contactBtn">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Google AdSense Container Above Welcome -->
+        <div class="adsense-container" id="adsense-above">
+            <div style="width: 728px; height: 90px; background: #e0e0e0; text-align: center; line-height: 90px;">
+                [Google AdSense 728×90 Code Here]
+            </div>
+        </div>
+
+        <!-- Welcome to CareerPrep Container -->
+        <div class="welcome-wrapper feature-box" id="homeSection">
+            <div class="welcome-header">
+                <h1>Welcome to CareerPrep</h1>
+                <p>Your ultimate platform for job entry test preparation and skill-building quizzes.</p>
+            </div>
+            <div class="content-section">
+                <div class="benefits">
+                    <h2>Prepare with Confidence</h2>
+                    <ul>
+                        <li>Industry-relevant test questions</li>
+                        <li>Customizable practice sessions</li>
+                        <li>Real-time performance tracking</li>
+                        <li>Expert tips and strategies</li>
+                    </ul>
+                </div>
+                <div class="action-area">
+                    <p>Ready to ace your job entry test? Start your journey now!</p>
+                    <button class="start-test-btn" id="startTestBtn">Start Test</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google AdSense Container Below Welcome -->
+        <div class="adsense-container" id="adsense-below">
+            <div style="width: 728px; height: 90px; background: #e0e0e0; text-align: center; line-height: 90px;">
+                [Google AdSense 728×90 Code Here]
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="feature-box">
+                <h3>Test Categories</h3>
+                <p>Explore a variety of test categories tailored to your career goals.</p>
+                <ul>
+                    <li>Aptitude Tests</li>
+                    <li>Technical Skills</li>
+                    <li>Personality Assessments</li>
+                </ul>
+                <a href="#" class="feature-btn" id="categoriesBtn">Browse Categories</a>
+                <div class="categories-slider" id="categoriesSlider">
+                    <h4>Available Subjects & Classes</h4>
+                    <p><strong>Subjects:</strong> Mathematics, Physics, English, Biology, Sindhi, Urdu Grammar, Chemistry, Computer Science, and more.</p>
+                    <p><strong>Class Levels:</strong> 9th grade to Advanced Level.</p>
+                    <p><strong>About Me:</strong> I'm Grok, an AI created by xAI, here to assist you.</p>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <h3>Get Started Guide</h3>
+                <p>Step-by-step instructions to kickstart your preparation journey.</p>
+                <ul>
+                    <li>Create Your Profile</li>
+                    <li>Select Your Test</li>
+                    <li>Track Your Progress</li>
+                </ul>
+                <a href="#" class="feature-btn" id="guideBtn">View Guide</a>
+                <div class="guide-slider" id="guideSlider">
+                    <h4>How to Attempt an Online Quiz</h4>
+                    <p>1. <strong>Select Class and Subject:</strong> Choose your class and subject.</p>
+                    <p>2. <strong>Quiz Format:</strong> Multiple-choice questions with four options.</p>
+                    <p>3. <strong>Time Limit:</strong> 30 seconds per question.</p>
+                </div>
+            </div>
+
+            <div class="feature-box donate-box">
+                <h3>Donate Us</h3>
+                <p>Contribute to CareerPrep to support developer costs, maintenance, and hosting.</p>
+                <ul>
+                    <li>Keep the platform running smoothly</li>
+                    <li>Fund new features and updates</li>
+                    <li>Ensure free access for all users</li>
+                </ul>
+                <a href="#" class="feature-btn" id="donateBtn">Donate Now</a>
+                <div class="donation-form" id="donationForm">
+                    <h4>How to Donate</h4>
+                    <div class="donation-option">
+                        <p><strong>JazzCash</strong></p>
+                        <p>Account Number: 0300-1234567</p>
+                    </div>
+                    <div class="donation-option">
+                        <p><strong>Easypaisa</strong></p>
+                        <p>Account Number: 0345-9876543</p>
+                    </div>
+                    <div class="donation-option">
+                        <p><strong>Bank Details</strong></p>
+                        <p>Bank Name: Demo Bank</p>
+                        <p>Account Number: 1234-5678-9012-3456</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google AdSense Container Above Resources -->
+        <div class="adsense-container" id="adsense-resources">
+            <div style="width: 728px; height: 90px; background: #e0e0e0; text-align: center; line-height: 90px;">
+                [Google AdSense 728×90 Code Here]
+            </div>
+        </div>
+
+        <!-- Resources Container -->
+        <div class="resources-wrapper" id="resourcesWrapper">
+            <div class="resources-header">
+                <h1>Resources</h1>
+                <p>Welcome to our Resources page, where you'll find everything you need to excel in quiz-based exams and job preparation. Our goal is to provide high-quality study materials, practice quizzes, and expert guidance to help you succeed.</p>
+            </div>
+            <div class="resources-content">
+                <div class="resources-section">
+                    <h2>Study Materials</h2>
+                    <p>Access subject-wise study notes, PDFs, and reference materials for Mathematics, Physics, Chemistry, and Science. These resources are carefully curated to strengthen your conceptual understanding.</p>
+                </div>
+                <div class="resources-section">
+                    <h2>Practice Quizzes</h2>
+                    <p>Test your knowledge with our free and premium quizzes. Each quiz is designed to mimic real exam patterns, helping you improve speed and accuracy.</p>
+                </div>
+                <div class="resources-section">
+                    <h2>Exam Tips & Strategies</h2>
+                    <p>Get expert advice on time management, problem-solving techniques, and smart strategies to tackle competitive exams effectively.</p>
+                </div>
+                <div class="resources-section">
+                    <h2>Previous Year Papers</h2>
+                    <p>Boost your confidence with previous years' solved question papers. Reviewing these can help you understand common question patterns and key topics.</p>
+                </div>
+                <div class="resources-section">
+                    <h2>Reference Books & Websites</h2>
+                    <ul>
+                        <li>Recommended books for deeper learning</li>
+                        <li>Trusted online resources for exam preparation</li>
+                    </ul>
+                </div>
+                <div class="resources-section">
+                    <h2>FAQ Section</h2>
+                    <p>Got questions? Visit our FAQ section for answers on quiz access, scoring systems, and general preparation tips.</p>
+                </div>
+                <div class="resources-section">
+                    <h2>Community & Support</h2>
+                    <p>Join our discussion forums to interact with fellow learners, share doubts, and get expert guidance. Need assistance? Our support team is here to help!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us Container -->
+        <div class="about-wrapper" id="aboutWrapper">
+            <div class="about-content">
+                <h1>About Us</h1>
+                <p>Welcome to CareerPrep, your trusted platform for quiz test preparation and job exam readiness. We are dedicated to helping students and professionals excel in Mathematics, Physics, Chemistry, and Science through interactive quizzes and study resources.</p>
+                <h2>Our Mission</h2>
+                <p>Our goal is to make learning engaging and effective. We provide well-structured quizzes, study materials, and expert guidance to help you master key concepts and perform confidently in exams.</p>
+                <h2>What We Offer</h2>
+                <ul>
+                    <li>Topic-wise Quizzes: Practice quizzes designed to match real exam patterns.</li>
+                    <li>Study Materials: Access PDFs, notes, and past papers for better understanding.</li>
+                    <li>Exam Strategies: Tips and techniques to improve speed and accuracy.</li>
+                    <li>Community Support: Connect with learners, discuss doubts, and share knowledge.</li>
+                </ul>
+                <h2>Why Choose Us?</h2>
+                <ul>
+                    <li>Comprehensive Content: Covering key subjects for various competitive exams.</li>
+                    <li>User-Friendly Platform: Easy navigation and instant quiz feedback.</li>
+                    <li>Expert-Designed Quizzes: Crafted by professionals for effective learning.</li>
+                </ul>
+                <p>Join CareerPrep today and take a step closer to success!</p>
+            </div>
+        </div>
+
+        <!-- Contact Us Container -->
+        <div class="contact-wrapper" id="contactWrapper">
+            <div class="contact-content">
+                <h1>Contact Us</h1>
+                <p>We're here to help! If you have any questions, need support, or want to share feedback, feel free to reach out to us.</p>
+                <h2>Get in Touch</h2>
+                <ul>
+                    <li>📧 Email: support@careerprep.com</li>
+                    <li>📞 Phone: +1 234 567 890</li>
+                    <li>🌐 Website: www.careerprep.com</li>
+                </ul>
+                <h2>Support & Assistance</h2>
+                <p>For any issues related to quizzes, study materials, or account access, our support team is ready to assist you.</p>
+                <h2>Business Inquiries</h2>
+                <p>For collaborations, partnerships, or advertising opportunities, contact us at business@careerprep.com.</p>
+                <h2>Follow Us</h2>
+                <p>Stay updated with the latest quizzes, tips, and announcements.</p>
+                <ul>
+                    <li>📌 Facebook: facebook.com/careerprep</li>
+                    <li>📌 Twitter/X: twitter.com/careerprep</li>
+                    <li>📌 Instagram: instagram.com/careerprep</li>
+                </ul>
+                <p>We value your feedback and look forward to hearing from you!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About CareerPrep</h3>
+                <p>We empower your career journey with expertly crafted tests and resources.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#tests">Practice Tests</a></li>
+                    <li><a href="#resources">Study Resources</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><a href="mailto:support@careerprep.com">support@careerprep.com</a></li>
+                    <li><a href="tel:+1234567890">+1 234 567 890</a></li>
+                    <li><a href="#social">Follow Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 CareerPrep. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container-wrapper" id="quizContainerWrapper">
+        <div class="quiz-header">
+            <h1>CareerPrep Quiz</h1>
+            <button class="close-quiz" id="closeQuizBtn">×</button>
+        </div>
+        <div class="quiz-body">
+            <div class="details-form" id="detailsForm">
+                <h2 class="enter-details">Complete the details before starting the MCQs Quiz</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="fatherName">Father's Name:</label>
+                <input type="text" id="fatherName" required>
+                <label for="caste">Caste:</label>
+                <input type="text" id="caste" required>
+                <label for="class">Class:</label>
+                <select id="class" required>
+                    <option value="">Select Class</option>
+                    <option value="9th">9th</option>
+                    <option value="10th">10th</option>
+                    <option value="11th">11th</option>
+                    <option value="12th">12th</option>
+                    <option value="Higher Classes (Advanced Level)">Higher Classes (Advanced Level)</option>
+                </select>
+                <label for="subject">Subject:</label>
+                <select id="subject" required onchange="updateQuestionOptions()">
+                    <option value="">Select Subject</option>
+                    <option value="English">English</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="General Science">General Science</option>
+                    <option value="Computer">Computer</option>
+                    <option value="General Knowledge">General Knowledge</option>
+                    <option value="Sindhi Grammar">Sindhi Grammar</option>
+                    <option value="Urdu Grammar">Urdu Grammar</option>
+                </select>
+                <label for="numQuestions">How many questions would you like to attempt?</label>
+                <select id="numQuestions" onchange="toggleManualInput()">
+                    <option value="">Select Number of Questions</option>
+                    <option value="10">10 Questions</option>
+                    <option value="20">20 Questions</option>
+                    <option value="25">25 Questions</option>
+                    <option value="50">50 Questions</option>
+                    <option value="100">100 Questions</option>
+                    <option value="manual">Enter Question Manually</option>
+                </select>
+                <div id="manualQuestionInput">
+                    <label for="manualQuestions">Enter Number of Questions:</label>
+                    <input type="number" id="manualQuestions" min="1" max="100" placeholder="Enter from 1 to 100">
+                </div>
+                <label for="institutionType">Institution Type:</label>
+                <select id="institutionType" onchange="updateInstitutionInput()">
+                    <option value="">Select Institution Type</option>
+                    <option value="school">School</option>
+                    <option value="college">College</option>
+                    <option value="university">University</option>
+                </select>
+                <div id="schoolInput" class="institution-input">
+                    <label for="schoolName">School Name:</label>
+                    <input type="text" id="schoolName">
+                </div>
+                <div id="collegeInput" class="institution-input">
+                    <label for="collegeName">College Name:</label>
+                    <input type="text" id="collegeName">
+                </div>
+                <div id="universityInput" class="institution-input">
+                    <label for="universityName">University Name:</label>
+                    <input type="text" id="universityName">
+                </div>
+                <p class="below-inputs">Enter Your Details</p>
+                <button class="action-button" onclick="startQuiz()">Start Quiz</button>
+            </div>
+
+            <div class="quiz-container" id="quizContainer" style="display: none;">
+                <h1 id="quizTitle">Quiz</h1>
+                <div class="timer" id="timer">Time Left: 00:00</div>
+                <div id="quiz"></div>
+                <button class="action-button" onclick="submitQuiz()">Submit Quiz</button>
+                <button class="action-button" id="downloadPdfBtn" onclick="downloadPDF()">Download PDF</button>
+                <button class="action-button print-button" onclick="printQuizPreview()">Print Quiz Preview</button>
+                <div id="result"></div>
+            </div>
+
+            <div id="preview" style="display: none;">
+                <h2>Quiz Results Preview</h2>
+                <h3 class="school-name" id="schoolNameHeading"></h3>
+                <h4 class="date-heading" id="dateHeading"></h4>
+                <div class="summary-info" id="summaryInfo"></div>
+                <div id="preview-content"></div>
+            </div>
+
+            <div id="resultModal" class="modal">
+                <div class="modal-content">
+                    <h2 id="modalTitle">Quiz Result</h2>
+                    <div id="modalMessage"></div>
+                </div>
+            </div>
+
+            <div id="timeUpModal" class="modal">
+                <div class="modal-content">
+                    <h2>Time's Up!</h2>
+                    <p>Your time for this quiz has ended. Please submit your quiz now.</p>
+                    <button onclick="closeTimeUpModal()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        // Menu Toggle for Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Start Test Button Functionality
+        const startTestBtn = document.getElementById('startTestBtn');
+        const quizContainerWrapper = document.getElementById('quizContainerWrapper');
+        const closeQuizBtn = document.getElementById('closeQuizBtn');
+
+        startTestBtn.addEventListener('click', function() {
+            this.textContent = 'Initializing...';
+            this.style.background = '#1b5e20';
+            this.disabled = true;
+
+            setTimeout(() => {
+                quizContainerWrapper.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                this.textContent = 'Start Test';
+                this.style.background = '#2e7d32';
+                this.disabled = false;
+            }, 800);
+        });
+
+        closeQuizBtn.addEventListener('click', function() {
+            quizContainerWrapper.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Donate, Guide, Categories Button Functionality
+        const donateBtn = document.getElementById('donateBtn');
+        const donationForm = document.getElementById('donationForm');
+        const guideBtn = document.getElementById('guideBtn');
+        const guideSlider = document.getElementById('guideSlider');
+        const categoriesBtn = document.getElementById('categoriesBtn');
+        const categoriesSlider = document.getElementById('categoriesSlider');
+
+        donateBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            donationForm.classList.toggle('active');
+        });
+
+        guideBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            guideSlider.classList.toggle('active');
+        });
+
+        categoriesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            categoriesSlider.classList.toggle('active');
+        });
+
+        // Resources Button Functionality
+        const resourcesBtn = document.getElementById('resourcesBtn');
+        const resourcesWrapper = document.getElementById('resourcesWrapper');
+
+        resourcesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            resourcesWrapper.classList.toggle('active');
+            if (resourcesWrapper.classList.contains('active')) {
+                setTimeout(() => {
+                    resourcesWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+
+        // About Us Button Functionality
+        const aboutBtn = document.getElementById('aboutBtn');
+        const aboutWrapper = document.getElementById('aboutWrapper');
+
+        aboutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            aboutWrapper.classList.toggle('active');
+            if (aboutWrapper.classList.contains('active')) {
+                setTimeout(() => {
+                    aboutWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+
+        // Contact Us Button Functionality
+        const contactBtn = document.getElementById('contactBtn');
+        const contactWrapper = document.getElementById('contactWrapper');
+
+        contactBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactWrapper.classList.toggle('active');
+            if (contactWrapper.classList.contains('active')) {
+                setTimeout(() => {
+                    contactWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+
+        // Home Button Functionality
+        const homeBtn = document.getElementById('homeBtn');
+        const homeSection = document.getElementById('homeSection');
+
+        homeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Quiz Generator JavaScript
+        const { jsPDF } = window.jspdf;
+        
+        // Updated quiz data structure with standardized question format
+        const subjectQuizData = {
+            "9th": {
+                "English": [
+                    { question: "What is the past tense of 'go'?", options: ["gone", "went", "goed", "going"], answer: "went" }
+                ],
+                "Physics": [
+                    { question: "What is the SI unit of force?", options: ["Joule", "Newton", "Watt", "Pascal"], answer: "Newton" }
+                ],
+                "Chemistry": [
+                    { question: "What is the chemical symbol for gold?", options: ["Go", "Gd", "Au", "Ag"], answer: "Au" }
+                ],
+                "Biology": [
+                    { question: "What is the basic unit of life?", options: ["Atom", "Cell", "Molecule", "Tissue"], answer: "Cell" }
+                ],
+                "Mathematics": [
+                    { question: "What is the value of π (pi) to two decimal places?", options: ["3.14", "3.16", "3.18", "3.12"], answer: "3.14" }
+                ],
+                "General Science": [
+                    { question: "What is the chemical symbol for water?", options: ["H2O", "CO2", "NaCl", "O2"], answer: "H2O" }
+                ],
+                "Computer": [
+                    { question: "What does CPU stand for?", options: ["Central Processing Unit", "Computer Processing Unit", "Central Process Unit", "Computer Process Unit"], answer: "Central Processing Unit" }
+                ],
+                "General Knowledge": [
+                    { question: "Which is the largest ocean on Earth?", options: ["Atlantic", "Indian", "Arctic", "Pacific"], answer: "Pacific" }
+                ],
+                "Sindhi Grammar": [
+                    { 
+                        question: "سنڌي ۾ 'ڪتاب' جو معنى ڇا آهي؟", 
+                        options: ["ڪتاب", "قلم", "ڪاغذ", "پاڻي"], 
+                        answer: "ڪتاب",
+                        language: "sindhi"
+                    }
+                ],
+                "Urdu Grammar": [
+                    { 
+                        question: "اردو میں 'کتاب' کا مطلب کیا ہے؟", 
+                        options: ["کتاب", "قلم", "کاغذ", "پانی"], 
+                        answer: "کتاب",
+                        language: "urdu"
+                    }
+                ]
+            },
+            "10th": {
+                "English": [
+                    { question: "Which word is an adjective?", options: ["happiness", "happy", "happily", "happen"], answer: "happy" }
+                ],
+                "Physics": [
+                    { question: "Which of these is NOT a fundamental force of nature?", options: ["Gravitational force", "Electromagnetic force", "Nuclear force", "Frictional force"], answer: "Frictional force" }
+                ],
+                "Chemistry": [
+                    { question: "Which of these is NOT a noble gas?", options: ["Helium", "Neon", "Argon", "Chlorine"], answer: "Chlorine" }
+                ],
+                "Biology": [
+                    { question: "Which of these is NOT part of the central nervous system?", options: ["Brain", "Spinal cord", "Nerves", "Heart"], answer: "Heart" }
+                ],
+                "Mathematics": [
+                    { question: "What is the next number in the sequence: 2, 4, 6, 8, ...?", options: ["9", "10", "12", "14"], answer: "10" }
+                ],
+                "General Science": [
+                    { question: "Which gas do humans breathe out?", options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"], answer: "Carbon dioxide" }
+                ],
+                "Computer": [
+                    { question: "Which programming language is known as the 'mother of all languages'?", options: ["C", "Java", "Python", "Assembly"], answer: "C" }
+                ],
+                "General Knowledge": [
+                    { question: "Who painted the Mona Lisa?", options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"], answer: "Leonardo da Vinci" }
+                ],
+                "Sindhi Grammar": [
+                    { 
+                        question: "سنڌي ۾ 'استاد' جو معنى ڇا آهي؟", 
+                        options: ["استاد", "شاگرد", "ڪتاب", "مدد"], 
+                        answer: "استاد",
+                        language: "sindhi"
+                    }
+                ],
+                "Urdu Grammar": [
+                    { 
+                        question: "اردو میں 'استاد' کا مطلب کیا ہے؟", 
+                        options: ["استاد", "شاگرد", "کتاب", "مدد"], 
+                        answer: "استاد",
+                        language: "urdu"
+                    }
+                ]
+            },
+            "11th": {
+                "English": [
+                    { question: "What is the opposite of 'begin'?", options: ["start", "continue", "end", "pause"], answer: "end" }
+                ],
+                "Physics": [
+                    { question: "What is the formula for calculating work done?", options: ["Force × Distance", "Mass × Acceleration", "Pressure × Volume", "Current × Resistance"], answer: "Force × Distance" }
+                ],
+                "Chemistry": [
+                    { question: "What is the main component of natural gas?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: "Methane" }
+                ],
+                "Biology": [
+                    { question: "What is the powerhouse of the cell?", options: ["Nucleus", "Mitochondria", "Ribosome", "Golgi apparatus"], answer: "Mitochondria" }
+                ],
+                "Mathematics": [
+                    { question: "What is 3 to the power of 4?", options: ["12", "27", "64", "81"], answer: "81" }
+                ],
+                "General Science": [
+                    { question: "What is the SI unit of force?", options: ["Joule", "Newton", "Watt", "Pascal"], answer: "Newton" }
+                ],
+                "Computer": [
+                    { question: "What is the full form of URL?", options: ["Uniform Resource Locator", "Universal Resource Locator", "Uniform Resource Link", "Universal Resource Link"], answer: "Uniform Resource Locator" }
+                ],
+                "General Knowledge": [
+                    { question: "What is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" }
+                ],
+                "Sindhi Grammar": [
+                    { 
+                        question: "سنڌي ۾ 'پاڻي' جو معنى ڇا آهي؟", 
+                        options: ["پاڻي", "آب", "پاڻي", "سڀ"], 
+                        answer: "سڀ",
+                        language: "sindhi"
+                    }
+                ],
+                "Urdu Grammar": [
+                    { 
+                        question: "اردو میں 'پانی' کا مطلب کیا ہے؟", 
+                        options: ["پانی", "آب", "پانی", "سب"], 
+                        answer: "سب",
+                        language: "urdu"
+                    }
+                ]
+            },
+            "12th": {
+                "English": [
+                    { question: "Which word is a verb?", options: ["beautiful", "happiness", "run", "quickly"], answer: "run" }
+                ],
+                "Physics": [
+                    { question: "Which law states that the pressure of a gas is inversely proportional to its volume at constant temperature?", options: ["Charles's Law", "Boyle's Law", "Gay-Lussac's Law", "Avogadro's Law"], answer: "Boyle's Law" }
+                ],
+                "Chemistry": [
+                    { question: "Which of these is a chemical change?", options: ["Melting ice", "Boiling water", "Burning wood", "Breaking glass"], answer: "Burning wood" }
+                ],
+                "Biology": [
+                    { question: "Which part of the plant absorbs water and minerals?", options: ["Leaves", "Stem", "Roots", "Flowers"], answer: "Roots" }
+                ],
+                "Mathematics": [
+                    { question: "What is the mean of the numbers 4, 8, 6, 5, 7?", options: ["5", "6", "7", "8"], answer: "6" }
+                ],
+                "General Science": [
+                    { question: "Which organ pumps blood in the human body?", options: ["Liver", "Brain", "Heart", "Lungs"], answer: "Heart" }
+                ],
+                "Computer": [
+                    { question: "Which device converts digital signals to analog signals and vice versa?", options: ["Router", "Modem", "Switch", "Hub"], answer: "Modem" }
+                ],
+                "General Knowledge": [
+                    { question: "Which country is home to the kangaroo?", options: ["South Africa", "Brazil", "Australia", "New Zealand"], answer: "Australia" }
+                ],
+                "Sindhi Grammar": [
+                    { 
+                        question: "سنڌي ۾ 'علم' جو معنى ڇا آهي؟", 
+                        options: ["علم", "ڄاڻ", "وقار", "ھنر"], 
+                        answer: "علم",
+                        language: "sindhi"
+                    }
+                ],
+                "Urdu Grammar": [
+                    { 
+                        question: "اردو میں 'علم' کا مطلب کیا ہے؟", 
+                        options: ["علم", "گیان", "وقار", "ہنر"], 
+                        answer: "علم",
+                        language: "urdu"
+                    }
+                ]
+            },
+            "Higher Classes (Advanced Level)": {
+                "English": [
+                    { question: "What is the present participle of 'run'?", options: ["ran", "runned", "running", "runs"], answer: "running" }
+                ],
+                "Physics": [
+                    { question: "What is the acceleration due to gravity on Earth's surface?", options: ["9.8 m/s²", "8.9 m/s²", "10 m/s²", "7.8 m/s²"], answer: "9.8 m/s²" }
+                ],
+                "Chemistry": [
+                    { question: "What is the pH range of acidic solutions?", options: ["0-7", "7-14", "exactly 7", "above 14"], answer: "0-7" }
+                ],
+                "Biology": [
+                    { question: "What is the largest bone in the human body?", options: ["Skull", "Femur", "Humerus", "Tibia"], answer: "Femur" }
+                ],
+                "Mathematics": [
+                    { question: "What is the cube root of 27?", options: ["3", "4", "5", "6"], answer: "3" }
+                ],
+                "General Science": [
+                    { question: "What is the largest planet in our solar system?", options: ["Earth", "Saturn", "Jupiter", "Neptune"], answer: "Jupiter" }
+                ],
+                "Computer": [
+                    { question: "What is the main function of an operating system?", options: ["Manage hardware resources", "Create documents", "Design websites", "Play games"], answer: "Manage hardware resources" }
+                ],
+                "General Knowledge": [
+                    { question: "Which is the largest desert in the world?", options: ["Sahara", "Arabian", "Gobi", "Antarctic"], answer: "Antarctic" }
+                ],
+                "Sindhi Grammar": [
+                    { 
+                        question: "سنڌي ۾ 'تعليم' جو معنى ڇا آهي؟", 
+                        options: ["تعليم", "علم", "سکيا", "سڀ"], 
+                        answer: "سڀ",
+                        language: "sindhi"
+                    }
+                ],
+                "Urdu Grammar": [
+                    { 
+                        question: "اردو میں 'تعلیم' کا مطلب کیا ہے؟", 
+                        options: ["تعلیم", "علم", "سکشا", "سب"], 
+                        answer: "سب",
+                        language: "urdu"
+                    }
+                ]
+            }
+        };
+
+        let userAnswers = [];
+        let userDetails = {};
+        let currentQuizData = [];
+        let timer;
+        let timeLeft = 0;
+        let totalQuestions = 0;
+
+        function updateInstitutionInput() {
+            const institutionType = document.getElementById('institutionType').value;
+            document.getElementById('schoolInput').style.display = 'none';
+            document.getElementById('collegeInput').style.display = 'none';
+            document.getElementById('universityInput').style.display = 'none';
+
+            if (institutionType === 'school') document.getElementById('schoolInput').style.display = 'block';
+            else if (institutionType === 'college') document.getElementById('collegeInput').style.display = 'block';
+            else if (institutionType === 'university') document.getElementById('universityInput').style.display = 'block';
+        }
+
+        function updateQuestionOptions() {
+            const subject = document.getElementById('subject').value;
+            const manualInput = document.getElementById('manualQuestions');
+            const classSelected = document.getElementById('class').value;
+            
+            if (classSelected && subject && subjectQuizData[classSelected] && subjectQuizData[classSelected][subject]) {
+                const totalQuestions = subjectQuizData[classSelected][subject].length;
+                manualInput.placeholder = `Enter from 1 to ${Math.min(totalQuestions, 100)}`;
+                manualInput.max = Math.min(totalQuestions, 100);
+            } else {
+                manualInput.placeholder = "Enter from 1 to 100";
+                manualInput.max = 100;
+            }
+        }
+
+        function toggleManualInput() {
+            const numQuestions = document.getElementById('numQuestions').value;
+            document.getElementById('manualQuestionInput').style.display = numQuestions === 'manual' ? 'block' : 'none';
+        }
+
+        function getRandomQuestions(questions, count) {
+            const shuffled = [...questions];
+            
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            
+            return shuffled.slice(0, count);
+        }
+
+        function startQuiz() {
+            const name = document.getElementById('name').value.trim();
+            const fatherName = document.getElementById('fatherName').value.trim();
+            const caste = document.getElementById('caste').value.trim();
+            const classSelected = document.getElementById('class').value;
+            const subject = document.getElementById('subject').value;
+            const numQuestions = document.getElementById('numQuestions').value;
+            const manualQuestions = document.getElementById('manualQuestions').value.trim();
+            const institutionType = document.getElementById('institutionType').value;
+            const schoolName = document.getElementById('schoolName').value.trim();
+            const collegeName = document.getElementById('collegeName').value.trim();
+            const universityName = document.getElementById('universityName').value.trim();
+
+            if (!name || !fatherName || !caste || !classSelected || !subject || !institutionType || !numQuestions) {
+                alert("Please fill in all required details to start the quiz.");
+                return;
+            }
+
+            let institutionName = '';
+            let institutionLabel = '';
+            if (institutionType === 'school') {
+                if (!schoolName) { alert("Please enter the school name."); return; }
+                institutionName = schoolName;
+                institutionLabel = 'School';
+            } else if (institutionType === 'college') {
+                if (!collegeName) { alert("Please enter the college name."); return; }
+                institutionName = collegeName;
+                institutionLabel = 'College';
+            } else if (institutionType === 'university') {
+                if (!universityName) { alert("Please enter the university name."); return; }
+                institutionName = universityName;
+                institutionLabel = 'University';
+            }
+
+            let selectedNumQuestions;
+            if (numQuestions === 'manual') {
+                if (!manualQuestions || manualQuestions < 1 || isNaN(manualQuestions) || manualQuestions > 100) {
+                    alert("Please enter a valid number of questions between 1 and 100.");
+                    return;
+                }
+                selectedNumQuestions = parseInt(manualQuestions);
+                const maxQuestions = subjectQuizData[classSelected] && subjectQuizData[classSelected][subject] ? subjectQuizData[classSelected][subject].length : 0;
+                if (selectedNumQuestions > maxQuestions) {
+                    alert(`Number of questions cannot exceed ${maxQuestions} for ${subject}.`);
+                    return;
+                }
+            } else {
+                selectedNumQuestions = parseInt(numQuestions);
+            }
+
+            userDetails = { name, fatherName, caste, class: classSelected, subject, institutionType, institutionName, institutionLabel };
+            
+            if (subjectQuizData[classSelected] && subjectQuizData[classSelected][subject]) {
+                totalQuestions = Math.min(selectedNumQuestions, subjectQuizData[classSelected][subject].length);
+                currentQuizData = getRandomQuestions(subjectQuizData[classSelected][subject], totalQuestions);
+            } else {
+                alert(`No questions available for ${classSelected} ${subject}. Please try another combination.`);
+                return;
+            }
+            
+            timeLeft = totalQuestions * 30;
+
+            document.getElementById('quizTitle').textContent = `${classSelected} ${subject} Quiz`;
+            document.getElementById('detailsForm').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'block';
+
+            // Show/hide PDF download button based on subject
+            const pdfButton = document.getElementById('downloadPdfBtn');
+            if (subject === "Urdu Grammar" || subject === "Sindhi Grammar") {
+                pdfButton.style.display = 'none';
+            } else {
+                pdfButton.style.display = 'block';
+            }
+
+            showAllQuestions();
+            startTimer();
+        }
+
+        function showAllQuestions() {
+            const quizDiv = document.getElementById('quiz');
+            quizDiv.innerHTML = '';
+
+            currentQuizData.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                
+                const languageClass = q.language ? q.language : '';
+                
+                questionDiv.innerHTML = `
+                    <div class="question-header ${languageClass}">
+                        ${index + 1}. ${q.question}
+                    </div>
+                    <div class="options">
+                        ${q.options.map((option, i) => `
+                            <label class="${languageClass}">
+                                <input type="radio" name="q${index}" value="${option}">
+                                <span>${String.fromCharCode(97 + i)}) ${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                quizDiv.appendChild(questionDiv);
+                
+                setTimeout(() => {
+                    questionDiv.classList.add('show');
+                }, index * 100);
+            });
+        }
+
+        function startTimer() {
+            updateTimerDisplay();
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('timer').classList.add('time-up');
+                    disableQuiz();
+                    showTimeUpModal();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent =
+                `Time Left: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function disableQuiz() {
+            document.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = true);
+        }
+
+        function showTimeUpModal() {
+            document.getElementById('timeUpModal').style.display = 'block';
+        }
+
+        function closeTimeUpModal() {
+            document.getElementById('timeUpModal').style.display = 'none';
+            submitQuiz();
+        }
+
+        function submitQuiz() {
+            clearInterval(timer);
+            disableQuiz();
+
+            userAnswers = [];
+            for (let i = 0; i < currentQuizData.length; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                userAnswers.push(selected ? selected.value : null);
+            }
+
+            let score = 0;
+            let attempted = 0;
+            currentQuizData.forEach((q, i) => {
+                if (userAnswers[i] !== null) attempted++;
+                if (userAnswers[i] === q.answer) score++;
+            });
+
+            const percentage = (score / currentQuizData.length) * 100;
+            const passStatus = percentage >= 33 ? "Pass" : "Fail";
+
+            const modal = document.getElementById('resultModal');
+            const modalContent = modal.querySelector('.modal-content');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+
+            modalContent.classList.remove('pass', 'fail');
+            modalContent.classList.add(passStatus.toLowerCase());
+
+            if (passStatus === "Pass") {
+                modalTitle.textContent = "Congratulations! You Passed! 🎉";
+                modalMessage.innerHTML = `
+                    <div class="score-display">Score: ${score}/${currentQuizData.length} (${percentage.toFixed(1)}%)</div>
+                    <div class="details">Great job! You've successfully passed the ${userDetails.subject} quiz.</div>
+                    <div class="action-buttons">
+                        <button class="view-details" onclick="closeModal()">View Detailed Results</button>
+                        <button class="retry" onclick="restartQuiz()">Try Another Quiz</button>
+                    </div>
+                `;
+            } else {
+                modalTitle.textContent = "Better Luck Next Time!";
+                modalMessage.innerHTML = `
+                    <div class="score-display">Score: ${score}/${currentQuizData.length} (${percentage.toFixed(1)}%)</div>
+                    <div class="details">You need 33% to pass. Don't give up! Keep practicing.</div>
+                    <div class="action-buttons">
+                        <button class="view-details" onclick="closeModal()">View Detailed Results</button>
+                        <button class="retry" onclick="restartQuiz()">Retry Quiz</button>
+                    </div>
+                `;
+            }
+            modal.style.display = "block";
+
+            const previewDiv = document.getElementById('preview');
+            const previewContent = document.getElementById('preview-content');
+            previewDiv.style.display = 'block';
+            previewContent.innerHTML = '';
+
+            document.getElementById('schoolNameHeading').textContent = userDetails.institutionType === 'school' ? userDetails.institutionName : '';
+            const dateHeading = document.getElementById('dateHeading');
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            dateHeading.textContent = `Date: ${dateStr}`;
+
+            document.getElementById('summaryInfo').innerHTML = `
+                <p><strong>Name:</strong> ${userDetails.name}</p>
+                <p><strong>Father's Name:</strong> ${userDetails.fatherName}</p>
+                <p><strong>Caste:</strong> ${userDetails.caste}</p>
+                <p><strong>Class:</strong> ${userDetails.class}</p>
+                <p><strong>Subject:</strong> ${userDetails.subject}</p>
+                <p><strong>${userDetails.institutionLabel}:</strong> ${userDetails.institutionName}</p>
+                <p><strong>Total Questions:</strong> ${currentQuizData.length}</p>
+                <p><strong>Total Attempted Questions:</strong> ${attempted}</p>
+                <p><strong>Total Marks:</strong> ${currentQuizData.length}</p>
+                <p><strong>Total Obtained Marks:</strong> ${score}</p>
+                <p><strong>Percentage:</strong> ${percentage.toFixed(1)}%</p>
+                <p><strong>Pass Status:</strong> ${passStatus}</p>
+            `;
+
+            currentQuizData.forEach((q, index) => {
+                const previewQuestionDiv = document.createElement('div');
+                previewQuestionDiv.className = 'preview-question';
+                const isQuestionCorrect = userAnswers[index] === q.answer;
+                const questionSymbol = isQuestionCorrect ? '<span class="correct">✓</span>' : '<span class="incorrect">✗</span>';
+                
+                const languageClass = q.language ? q.language : '';
+
+                let optionsHTML = q.options.map((option, i) => {
+                    const isUserSelected = option === userAnswers[index];
+                    const isCorrectOption = option === q.answer;
+                    const isUserCorrect = userAnswers[index] === q.answer;
+                    let symbol = '';
+                    let userSymbol = '';
+                    let optionClass = '';
+
+                    if (isCorrectOption) {
+                        optionClass = 'correct-option';
+                        if (!isUserSelected) symbol = '<span class="correct">✓</span>';
+                    }
+                    if (isUserSelected) {
+                        if (isUserCorrect) {
+                            userSymbol = '<span class="correct">✓</span>';
+                            optionClass = 'correct-option';
+                        } else {
+                            userSymbol = '<span class="incorrect">✗</span>';
+                            optionClass = 'wrong-selected';
+                        }
+                    }
+
+                    return `
+                        <label class="${languageClass}">
+                            ${symbol} <span class="${optionClass}">${String.fromCharCode(97 + i)}) ${option}</span>
+                            ${isUserSelected ? `<span class="user-answer">(Your Answer) ${userSymbol}</span>` : ''}
+                        </label>
+                    `;
+                }).join('');
+
+                previewQuestionDiv.innerHTML = `
+                    <div class="question-header ${languageClass}">
+                        ${questionSymbol} Q.${index + 1}. ${q.question}
+                    </div>
+                    <div class="preview-options">
+                        ${optionsHTML}
+                    </div>
+                `;
+                previewContent.appendChild(previewQuestionDiv);
+            });
+
+            document.getElementById('result').innerHTML = `You scored ${score} out of ${currentQuizData.length}!`;
+        }
+
+        function closeModal() {
+            document.getElementById('resultModal').style.display = "none";
+        }
+
+        function restartQuiz() {
+            document.getElementById('resultModal').style.display = "none";
+            document.getElementById('quizContainer').style.display = "none";
+            document.getElementById('preview').style.display = "none";
+            document.getElementById('detailsForm').style.display = "block";
+            document.getElementById('detailsForm').reset();
+            userAnswers = [];
+            currentQuizData = [];
+            timeLeft = 0;
+            totalQuestions = 0;
+        }
+
+        function downloadPDF() {
+            const pdfButton = document.querySelector('button[onclick="downloadPDF()"]');
+            const originalButtonText = pdfButton.textContent;
+            pdfButton.textContent = "Generating PDF...";
+            pdfButton.disabled = true;
+
+            if (userDetails.subject === "Urdu Grammar" || userDetails.subject === "Sindhi Grammar") {
+                generatePDFFromPreview();
+            } else {
+                generateStandardPDF();
+            }
+
+            function generatePDFFromPreview() {
+                try {
+                    const previewElement = document.getElementById('preview');
+                    
+                    html2canvas(previewElement, {
+                        scale: 2,
+                        logging: false,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#F0FFF0'
+                    }).then(canvas => {
+                        const imgData = canvas.toDataURL('image/png');
+                        const pdf = new jsPDF('portrait', 'mm', 'a4');
+                        const imgWidth = pdf.internal.pageSize.getWidth();
+                        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                        
+                        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                        pdf.setFontSize(10);
+                        pdf.setTextColor(150, 150, 150);
+                        pdf.text("Generated by MCQs Quiz Generator", imgWidth - 15, imgHeight - 10, { align: 'right' });
+                        pdf.save(`${userDetails.name}_${userDetails.subject}_Quiz_Results.pdf`);
+                        
+                        pdfButton.textContent = originalButtonText;
+                        pdfButton.disabled = false;
+                    });
+                } catch (error) {
+                    console.error("PDF generation from preview failed:", error);
+                    alert("Error generating PDF from preview. Please try again.");
+                    pdfButton.textContent = originalButtonText;
+                    pdfButton.disabled = false;
+                }
+            }
+
+            function generateStandardPDF() {
+                try {
+                    const pdf = new jsPDF('portrait', 'mm', 'a3');
+                    const margin = 15;
+                    let yPos = 20;
+                    const lineHeight = 7;
+                    const pageWidth = pdf.internal.pageSize.getWidth();
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+                    const columnWidth = (pageWidth - margin * 2 - 5) / 2;
+
+                    pdf.setFillColor(220, 255, 220);
+                    pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+
+                    if (userDetails.institutionName) {
+                        pdf.setFontSize(12);
+                        pdf.setTextColor(0, 100, 0);
+                        pdf.setFont("helvetica", "bold");
+                        pdf.text(userDetails.institutionName.toUpperCase(), pageWidth / 2, 15, { align: 'center' });
+                        
+                        pdf.setDrawColor(0, 128, 0);
+                        pdf.setLineWidth(0.5);
+                        pdf.line(margin, 20, pageWidth - margin, 20);
+                        yPos = 30;
+                    }
+
+                    pdf.setFontSize(24);
+                    pdf.setTextColor(0, 100, 0);
+                    pdf.setFont("helvetica", "bold");
+                    pdf.text(`${userDetails.class} ${userDetails.subject} Quiz Results`, pageWidth / 2, yPos, { align: 'center' });
+                    yPos += 20;
+
+                    pdf.setFontSize(14);
+                    pdf.setTextColor(0, 128, 0);
+                    pdf.setFont("helvetica", "italic");
+                    pdf.text("Comprehensive Performance Report", pageWidth / 2, yPos, { align: 'center' });
+                    yPos += 25;
+
+                    pdf.setFontSize(16);
+                    pdf.setTextColor(0, 100, 0);
+                    pdf.setFont("helvetica", "bold");
+                    pdf.text("STUDENT INFORMATION", margin, yPos);
+                    yPos += 10;
+
+                    pdf.setFillColor(255, 255, 255);
+                    pdf.setDrawColor(0, 128, 0);
+                    pdf.setLineWidth(0.3);
+                    pdf.roundedRect(margin - 5, yPos - 5, pageWidth - margin * 2 + 10, 100, 3, 3, 'FD');
+                    
+                    pdf.setFontSize(12);
+                    const studentInfo = [
+                        { label: "Name:", value: userDetails.name },
+                        { label: "Father's Name:", value: userDetails.fatherName },
+                        { label: "Caste:", value: userDetails.caste },
+                        { label: "Class:", value: userDetails.class },
+                        { label: "Subject:", value: userDetails.subject },
+                        { label: `${userDetails.institutionLabel}:`, value: userDetails.institutionName }
+                    ];
+
+                    studentInfo.forEach(info => {
+                        pdf.setFont("helvetica", "bold");
+                        pdf.setTextColor(0, 100, 0);
+                        const labelWidth = pdf.getTextWidth(info.label);
+                        pdf.text(info.label, margin, yPos);
+                        pdf.setFont("helvetica", "normal");
+                        pdf.setTextColor(0, 0, 0);
+                        pdf.text(info.value, margin + labelWidth + 2, yPos);
+                        yPos += lineHeight + 2;
+                    });
+
+                    yPos += 20;
+
+                    const score = userAnswers.filter((ans, i) => ans === currentQuizData[i].answer).length;
+                    const attempted = userAnswers.filter(ans => ans !== null).length;
+                    const percentage = (score / currentQuizData.length * 100).toFixed(1);
+                    const passStatus = percentage >= 33 ? "Pass" : "Fail";
+                    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                    pdf.setFontSize(16);
+                    pdf.setTextColor(0, 100, 0);
+                    pdf.setFont("helvetica", "bold");
+                    pdf.text("QUIZ SUMMARY", margin, yPos);
+                    yPos += 10;
+
+                    pdf.setFillColor(255, 255, 255);
+                    pdf.setDrawColor(0, 128, 0);
+                    pdf.setLineWidth(0.3);
+                    pdf.roundedRect(margin - 5, yPos - 5, pageWidth - margin * 2 + 10, 80, 3, 3, 'FD');
+
+                    pdf.setFontSize(12);
+                    const summaryInfo = [
+                        { label: "Date:", value: dateStr },
+                        { label: "Total Questions:", value: currentQuizData.length.toString() },
+                        { label: "Attempted:", value: attempted.toString() },
+                        { label: "Score:", value: `${score}/${currentQuizData.length}` },
+                        { label: "Percentage:", value: `${percentage}%` },
+                        { label: "Status:", value: passStatus }
+                    ];
+
+                    summaryInfo.forEach(info => {
+                        pdf.setFont("helvetica", "bold");
+                        pdf.setTextColor(0, 100, 0);
+                        const labelWidth = pdf.getTextWidth(info.label);
+                        pdf.text(info.label, margin, yPos);
+                        pdf.setFont("helvetica", "normal");
+                        pdf.setTextColor(0, 0, 0);
+                        pdf.text(info.value, margin + labelWidth + 2, yPos);
+                        yPos += lineHeight + 2;
+                    });
+
+                    pdf.setFontSize(10);
+                    pdf.setTextColor(150, 150, 150);
+                    pdf.text("Generated by MCQs Quiz Generator", pageWidth - margin, pageHeight - 10, { align: 'right' });
+
+                    pdf.addPage();
+                    yPos = 20;
+
+                    pdf.setFillColor(220, 255, 220);
+                    pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+
+                    pdf.setFontSize(20);
+                    pdf.setTextColor(0, 100, 0);
+                    pdf.setFont("helvetica", "italic");
+                    pdf.text('Detailed Results', pageWidth / 2, yPos, { align: 'center' });
+                    yPos += 15;
+
+                    pdf.setDrawColor(0, 128, 0);
+                    pdf.setLineWidth(0.3);
+                    pdf.line(pageWidth / 2, yPos, pageWidth / 2, pageHeight - 10);
+
+                    const questionsPerPage = calculateQuestionsPerPage(pdf, currentQuizData, columnWidth, lineHeight, pageHeight, margin);
+
+                    for (let pageStart = 0; pageStart < currentQuizData.length; pageStart += questionsPerPage * 2) {
+                        if (pageStart > 0) {
+                            pdf.addPage();
+                            yPos = 20;
+                            pdf.setFillColor(220, 255, 220);
+                            pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+                            
+                            pdf.setFontSize(20);
+                            pdf.setTextColor(0, 100, 0);
+                            pdf.setFont("helvetica", "italic");
+                            pdf.text('Detailed Results (Continued)', pageWidth / 2, yPos, { align: 'center' });
+                            yPos += 15;
+                            pdf.setDrawColor(0, 128, 0);
+                            pdf.setLineWidth(0.3);
+                            pdf.line(pageWidth / 2, yPos, pageWidth / 2, pageHeight - 10);
+                        }
+
+                        let leftYPos = yPos;
+                        let rightYPos = yPos;
+
+                        for (let i = 0; i < questionsPerPage; i++) {
+                            const leftIndex = pageStart + i;
+                            const rightIndex = pageStart + questionsPerPage + i;
+
+                            if (leftIndex < currentQuizData.length) {
+                                leftYPos = addQuestionToPDF(pdf, currentQuizData[leftIndex], leftIndex, margin, leftYPos, columnWidth, lineHeight, pageHeight, userAnswers[leftIndex]);
+                            }
+
+                            if (rightIndex < currentQuizData.length) {
+                                rightYPos = addQuestionToPDF(pdf, currentQuizData[rightIndex], rightIndex, pageWidth / 2 + 5, rightYPos, columnWidth, lineHeight, pageHeight, userAnswers[rightIndex]);
+                            }
+                        }
+
+                        // Add footer to each page
+                        pdf.setFontSize(10);
+                        pdf.setTextColor(150, 150, 150);
+                        pdf.text("Generated by MCQs Quiz Generator", pageWidth - margin, pageHeight - 10, { align: 'right' });
+                    }
+
+                    pdf.save(`${userDetails.name}_${userDetails.subject}_Quiz_Results.pdf`);
+
+                } catch (error) {
+                    console.error("Standard PDF generation failed:", error);
+                    alert("Error generating standard PDF. Please try again.");
+                } finally {
+                    pdfButton.textContent = originalButtonText;
+                    pdfButton.disabled = false;
+                }
+            }
+        }
+
+        function calculateQuestionsPerPage(pdf, questions, columnWidth, lineHeight, pageHeight, margin) {
+            let testY = 20;
+            let questionsThatFit = 0;
+            const testQuestion = questions[0] || { question: "Test question?", options: ["Option 1", "Option 2", "Option 3", "Option 4"] };
+
+            while (true) {
+                const questionLines = pdf.splitTextToSize(`1. ${testQuestion.question}`, columnWidth - 5);
+                testY += lineHeight * questionLines.length;
+                
+                testY += lineHeight * testQuestion.options.length;
+                
+                testY += lineHeight * 0.5;
+                
+                if (testY > pageHeight - margin) {
+                    break;
+                }
+                
+                questionsThatFit++;
+            }
+            
+            return Math.max(1, questionsThatFit);
+        }
+
+        function addQuestionToPDF(pdf, question, index, xPos, yPos, columnWidth, lineHeight, pageHeight, userAnswer) {
+            if (yPos > pageHeight - 20) {
+                return yPos;
+            }
+
+            pdf.setFontSize(12);
+            pdf.setTextColor(0, 0, 0);
+
+            const questionLines = pdf.splitTextToSize(`${index + 1}. ${question.question}`, columnWidth - 5);
+            
+            if (userDetails.subject === "Sindhi Grammar") {
+                pdf.setFont("helvetica", "normal");
+            } 
+            else {
+                pdf.setFont("helvetica", "bold");
+            }
+            
+            pdf.text(questionLines, xPos, yPos);
+            yPos += lineHeight * questionLines.length;
+
+            question.options.forEach((opt, j) => {
+                if (yPos > pageHeight - 20) {
+                    return yPos;
+                }
+
+                const isCorrect = opt === question.answer;
+                const isSelected = opt === userAnswer;
+                const isWrong = isSelected && !isCorrect;
+
+                if (isCorrect) pdf.setTextColor(0, 128, 0);
+                else if (isWrong) pdf.setTextColor(255, 0, 0);
+                else pdf.setTextColor(0, 0, 0);
+
+                const prefix = String.fromCharCode(97 + j) + ") ";
+                let suffix = '';
+                if (isSelected) suffix += ' (Your Answer)';
+                if (isCorrect) suffix += ' (Correct Answer)';
+
+                pdf.setFont("helvetica", "normal");
+                const optionText = `   ${prefix}${opt}`;
+                pdf.text(optionText, xPos + 5, yPos);
+                
+                const optionWidth = pdf.getTextWidth(optionText);
+                
+                if (suffix) {
+                    pdf.setFont("helvetica", "italic");
+                    pdf.text(suffix, xPos + 5 + optionWidth, yPos);
+                    pdf.setFont("helvetica", "normal");
+                }
+                
+                yPos += lineHeight;
+            });
+
+            yPos += lineHeight * 0.5;
+            
+            return yPos;
+        }
+
+        function printQuizPreview() {
+            const printButton = document.querySelector('button[onclick="printQuizPreview()"]');
+            const originalButtonText = printButton.textContent;
+            printButton.textContent = "Preparing Print...";
+            printButton.disabled = true;
+
+            try {
+                const previewElement = document.getElementById('preview');
+                
+                html2canvas(previewElement, {
+                    scale: 2,
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const windowContent = '<!DOCTYPE html>';
+                    const printWindow = window.open('', '', 'width=800,height=600');
+                    
+                    printWindow.document.open();
+                    printWindow.document.write(`
+                        <html>
+                            <head>
+                                <title>Print Quiz Preview</title>
+                                <style>
+                                    body { margin: 0; padding: 0; }
+                                    img { width: 100%; height: auto; }
+                                    @media print {
+                                        body { margin: 0; padding: 0; }
+                                        img { width: 100%; height: auto; }
+                                    }
+                                </style>
+                            </head>
+                            <body>
+                                <img src="${imgData}" onload="window.print();window.close()" />
+                            </body>
+                        </html>
+                    `);
+                    printWindow.document.close();
+                });
+            } catch (error) {
+                console.error("Printing failed:", error);
+                alert("Error preparing print preview. Please try again.");
+            } finally {
+                printButton.textContent = originalButtonText;
+                printButton.disabled = false;
+            }
+        }
+
+        window.onload = () => {
+            document.getElementById('manualQuestionInput').style.display = 'none';
+        };
+    </script>
+</body>
+</html>
