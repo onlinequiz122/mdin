@@ -22,6 +22,8 @@
             color: #2e7d32;
             display: flex;
             flex-direction: column;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         /* Header Styles */
@@ -33,6 +35,7 @@
             top: 0;
             z-index: 1000;
             transition: background 0.3s ease;
+            width: 100%;
         }
 
         header.scrolled {
@@ -43,8 +46,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1300px;
+            max-width: 100%;
             margin: 0 auto;
+            width: 100%;
         }
 
         .logo {
@@ -112,12 +116,14 @@
         .main-content {
             flex: 1;
             padding: 40px;
+            width: 100%;
+            max-width: 100%;
         }
 
         /* AdSense Container */
         .adsense-container {
             width: 100%;
-            max-width: 1300px;
+            max-width: 100%;
             height: 90px;
             margin: 20px auto;
             display: flex;
@@ -134,7 +140,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 100%;
-            max-width: 1300px;
+            max-width: 100%;
             margin: 0 auto 40px;
         }
 
@@ -238,7 +244,7 @@
 
         /* Features Section */
         .features-section {
-            max-width: 1300px;
+            max-width: 100%;
             margin: 0 auto 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -421,7 +427,7 @@
             padding: 25px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 1300px;
+            max-width: 100%;
             margin: 0 auto 40px;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -499,7 +505,7 @@
             padding: 25px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 1300px;
+            max-width: 100%;
             margin: 0 auto 40px;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -557,7 +563,7 @@
             padding: 25px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 1300px;
+            max-width: 100%;
             margin: 0 auto 40px;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -613,10 +619,11 @@
             padding: 40px;
             color: #ffffff;
             transition: background 0.3s ease;
+            width: 100%;
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -689,6 +696,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            width: 100%;
         }
 
         .quiz-header h1 {
@@ -712,6 +720,8 @@
             background: #F7F9FC;
             color: #2D3748;
             line-height: 1.6;
+            width: 100%;
+            max-width: 100%;
         }
         .quiz-body h1, .quiz-body h2 {
             color: #1A3C34;
@@ -730,8 +740,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 128, 0, 0.1);
             position: relative;
-            max-width: 90%;
-            display: inline-block;
+            max-width: 100%;
+            display: block;
+            text-align: center;
         }
         .quiz-body h2.enter-details::before, .quiz-body h2.enter-details::after {
             content: "";
@@ -1395,7 +1406,7 @@
         </div>
         <div class="quiz-body">
             <div class="details-form" id="detailsForm">
-                <h2 class="enter-details"><center>Complete the details before starting the MCQs Quiz<center></h2>
+                <h2 class="enter-details">Complete the details before starting the MCQs Quiz</h2>
                 <label for="name">Name:</label>
                 <input type="text" id="name" required>
                 <label for="fatherName">Father's Name:</label>
@@ -1626,873 +1637,8 @@
                     { question: "What is the past tense of 'go'?", options: ["gone", "went", "goed", "going"], answer: "went" }
                 ],
                 "Physics": [
-                    { question: "What is the SI unit of force?", options: ["Joule", "Newton", "Watt", "Pascal"], answer: "Newton" },
-					  {  
-        "question": "What is the SI unit of force?",  
-        "options": ["Joule", "Newton", "Watt", "Pascal"],  
-        "answer": "Newton"  
-    },  
-    {  
-        "question": "Which of the following is a scalar quantity?",  
-        "options": ["Force", "Velocity", "Speed", "Acceleration"],  
-        "answer": "Speed"  
-    },  
-    {  
-        "question": "What is the acceleration due to gravity on Earth (approx.)?",  
-        "options": ["9.8 m/s²", "6.7 m/s²", "10 m/s²", "5.5 m/s²"],  
-        "answer": "9.8 m/s²"  
-    },  
-    {  
-        "question": "Which law states that 'for every action, there is an equal and opposite reaction'?",  
-        "options": ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"],  
-        "answer": "Newton's Third Law"  
-    },  
-    {  
-        "question": "What is the formula for calculating work done?",  
-        "options": ["W = F × d", "W = m × g", "W = P × t", "W = F / a"],  
-        "answer": "W = F × d"  
-    },  
-    {  
-        "question": "Which of the following is NOT a type of friction?",  
-        "options": ["Static friction", "Sliding friction", "Rolling friction", "Gravitational friction"],  
-        "answer": "Gravitational friction"  
-    },  
-    {  
-        "question": "What is the SI unit of power?",  
-        "options": ["Joule", "Watt", "Newton", "Pascal"],  
-        "answer": "Watt"  
-    },  
-    {  
-        "question": "The energy stored in a stretched spring is called:",  
-        "options": ["Kinetic energy", "Potential energy", "Elastic potential energy", "Thermal energy"],  
-        "answer": "Elastic potential energy"  
-    },  
-    {  
-        "question": "Which instrument is used to measure atmospheric pressure?",  
-        "options": ["Thermometer", "Barometer", "Ammeter", "Hydrometer"],  
-        "answer": "Barometer"  
-    },  
-    {  
-        "question": "The rate of change of velocity is called:",  
-        "options": ["Speed", "Momentum", "Acceleration", "Force"],  
-        "answer": "Acceleration"  
-    },
-        {  
-        "question": "What is the SI unit of force?",  
-        "options": ["Joule", "Newton", "Watt", "Pascal"],  
-        "answer": "Newton"  
-    },  
-    {  
-        "question": "Which of the following is a scalar quantity?",  
-        "options": ["Force", "Velocity", "Speed", "Acceleration"],  
-        "answer": "Speed"  
-    },  
-    {  
-        "question": "What is the acceleration due to gravity on Earth (approx.)?",  
-        "options": ["9.8 m/s²", "6.7 m/s²", "10 m/s²", "5.5 m/s²"],  
-        "answer": "9.8 m/s²"  
-    },  
-    {  
-        "question": "Which law states that 'for every action, there is an equal and opposite reaction'?",  
-        "options": ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"],  
-        "answer": "Newton's Third Law"  
-    },  
-    {  
-        "question": "What is the formula for calculating work done?",  
-        "options": ["W = F × d", "W = m × g", "W = P × t", "W = F / a"],  
-        "answer": "W = F × d"  
-    },  
-    {  
-        "question": "Which of the following is NOT a type of friction?",  
-        "options": ["Static friction", "Sliding friction", "Rolling friction", "Gravitational friction"],  
-        "answer": "Gravitational friction"  
-    },  
-    {  
-        "question": "What is the SI unit of power?",  
-        "options": ["Joule", "Watt", "Newton", "Pascal"],  
-        "answer": "Watt"  
-    },  
-    {  
-        "question": "The energy stored in a stretched spring is called:",  
-        "options": ["Kinetic energy", "Potential energy", "Elastic potential energy", "Thermal energy"],  
-        "answer": "Elastic potential energy"  
-    },  
-    {  
-        "question": "Which instrument is used to measure atmospheric pressure?",  
-        "options": ["Thermometer", "Barometer", "Ammeter", "Hydrometer"],  
-        "answer": "Barometer"  
-    },  
-    {  
-        "question": "The rate of change of velocity is called:",  
-        "options": ["Speed", "Momentum", "Acceleration", "Force"],  
-        "answer": "Acceleration"  
-    } ,
-	 {
-        "question": "What is the SI unit of force?",
-        "options": ["Joule", "Newton", "Watt", "Pascal"],
-        "answer": "Newton"
-    },
-    {
-        "question": "Which of the following is a scalar quantity?",
-        "options": ["Force", "Velocity", "Speed", "Acceleration"],
-        "answer": "Speed"
-    },
-    {
-        "question": "What is the acceleration due to gravity on Earth (approx.)?",
-        "options": ["9.8 m/s²", "6.7 m/s²", "10 m/s²", "5.5 m/s²"],
-        "answer": "9.8 m/s²"
-    },
-    {
-        "question": "Which law states that 'for every action, there is an equal and opposite reaction'?",
-        "options": ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"],
-        "answer": "Newton's Third Law"
-    },
-    {
-        "question": "What is the formula for calculating work done?",
-        "options": ["W = F × d", "W = m × g", "W = P × t", "W = F / a"],
-        "answer": "W = F × d"
-    },
-    {
-        "question": "Which of the following is NOT a type of friction?",
-        "options": ["Static friction", "Sliding friction", "Rolling friction", "Gravitational friction"],
-        "answer": "Gravitational friction"
-    },
-    {
-        "question": "What is the SI unit of power?",
-        "options": ["Joule", "Watt", "Newton", "Pascal"],
-        "answer": "Watt"
-    },
-    {
-        "question": "The energy stored in a stretched spring is called:",
-        "options": ["Kinetic energy", "Potential energy", "Elastic potential energy", "Thermal energy"],
-        "answer": "Elastic potential energy"
-    },
-    {
-        "question": "Which instrument is used to measure atmospheric pressure?",
-        "options": ["Thermometer", "Barometer", "Ammeter", "Hydrometer"],
-        "answer": "Barometer"
-    },
-    {
-        "question": "The rate of change of velocity is called:",
-        "options": ["Speed", "Momentum", "Acceleration", "Force"],
-        "answer": "Acceleration"
-    },
-    {
-        "question": "Which of the following is an example of a lever?",
-        "options": ["Pulley", "Inclined plane", "See-saw", "Screw"],
-        "answer": "See-saw"
-    },
-    {
-        "question": "What is the unit of frequency?",
-        "options": ["Hertz", "Decibel", "Ohm", "Volt"],
-        "answer": "Hertz"
-    },
-    {
-        "question": "The bending of light when it passes from one medium to another is called:",
-        "options": ["Reflection", "Refraction", "Dispersion", "Diffraction"],
-        "answer": "Refraction"
-    },
-    {
-        "question": "Which color of light has the longest wavelength?",
-        "options": ["Violet", "Blue", "Red", "Green"],
-        "answer": "Red"
-    },
-    {
-        "question": "What type of energy is stored in a battery?",
-        "options": ["Mechanical energy", "Chemical energy", "Nuclear energy", "Thermal energy"],
-        "answer": "Chemical energy"
-    },
-    {
-        "question": "What is the formula for density?",
-        "options": ["D = m × v", "D = m / v", "D = F / A", "D = P / t"],
-        "answer": "D = m / v"
-    },
-    {
-        "question": "Which law explains why objects float in fluids?",
-        "options": ["Pascal's Law", "Archimedes' Principle", "Hooke's Law", "Ohm's Law"],
-        "answer": "Archimedes' Principle"
-    },
-    {
-        "question": "What is the SI unit of electric current?",
-        "options": ["Volt", "Ampere", "Ohm", "Watt"],
-        "answer": "Ampere"
-    },
-    {
-        "question": "Which of the following is a good conductor of electricity?",
-        "options": ["Rubber", "Wood", "Copper", "Plastic"],
-        "answer": "Copper"
-    },
-    {
-        "question": "The loudness of sound is measured in:",
-        "options": ["Hertz", "Decibels", "Pascals", "Watts"],
-        "answer": "Decibels"
-    },
-	{
-        "question": "What is the SI unit of force?",
-        "options": ["Joule", "Newton", "Watt", "Pascal"],
-        "answer": "Newton"
-    },
-    {
-        "question": "Which of the following is a scalar quantity?",
-        "options": ["Force", "Velocity", "Speed", "Acceleration"],
-        "answer": "Speed"
-    },
-    {
-        "question": "What is the acceleration due to gravity on Earth (approx.)?",
-        "options": ["9.8 m/s²", "6.7 m/s²", "10 m/s²", "5.5 m/s²"],
-        "answer": "9.8 m/s²"
-    },
-    {
-        "question": "Which law states that 'for every action, there is an equal and opposite reaction'?",
-        "options": ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Law of Gravitation"],
-        "answer": "Newton's Third Law"
-    },
-    {
-        "question": "What is the formula for calculating work done?",
-        "options": ["W = F × d", "W = m × g", "W = P × t", "W = F / a"],
-        "answer": "W = F × d"
-    },
-    {
-        "question": "Which of the following is NOT a type of friction?",
-        "options": ["Static friction", "Sliding friction", "Rolling friction", "Gravitational friction"],
-        "answer": "Gravitational friction"
-    },
-    {
-        "question": "What is the SI unit of power?",
-        "options": ["Joule", "Watt", "Newton", "Pascal"],
-        "answer": "Watt"
-    },
-    {
-        "question": "The energy stored in a stretched spring is called:",
-        "options": ["Kinetic energy", "Potential energy", "Elastic potential energy", "Thermal energy"],
-        "answer": "Elastic potential energy"
-    },
-    {
-        "question": "Which instrument is used to measure atmospheric pressure?",
-        "options": ["Thermometer", "Barometer", "Ammeter", "Hydrometer"],
-        "answer": "Barometer"
-    },
-    {
-        "question": "The rate of change of velocity is called:",
-        "options": ["Speed", "Momentum", "Acceleration", "Force"],
-        "answer": "Acceleration"
-    },
-    {
-        "question": "Which of the following is an example of a lever?",
-        "options": ["Pulley", "Inclined plane", "See-saw", "Screw"],
-        "answer": "See-saw"
-    },
-    {
-        "question": "What is the unit of frequency?",
-        "options": ["Hertz", "Decibel", "Ohm", "Volt"],
-        "answer": "Hertz"
-    },
-    {
-        "question": "The bending of light when it passes from one medium to another is called:",
-        "options": ["Reflection", "Refraction", "Dispersion", "Diffraction"],
-        "answer": "Refraction"
-    },
-    {
-        "question": "Which color of light has the longest wavelength?",
-        "options": ["Violet", "Blue", "Red", "Green"],
-        "answer": "Red"
-    },
-    {
-        "question": "What type of energy is stored in a battery?",
-        "options": ["Mechanical energy", "Chemical energy", "Nuclear energy", "Thermal energy"],
-        "answer": "Chemical energy"
-    },
-    {
-        "question": "What is the formula for density?",
-        "options": ["D = m × v", "D = m / v", "D = F / A", "D = P / t"],
-        "answer": "D = m / v"
-    },
-    {
-        "question": "Which law explains why objects float in fluids?",
-        "options": ["Pascal's Law", "Archimedes' Principle", "Hooke's Law", "Ohm's Law"],
-        "answer": "Archimedes' Principle"
-    },
-    {
-        "question": "What is the SI unit of electric current?",
-        "options": ["Volt", "Ampere", "Ohm", "Watt"],
-        "answer": "Ampere"
-    },
-    {
-        "question": "Which of the following is a good conductor of electricity?",
-        "options": ["Rubber", "Wood", "Copper", "Plastic"],
-        "answer": "Copper"
-    },
-    {
-        "question": "The loudness of sound is measured in:",
-        "options": ["Hertz", "Decibels", "Pascals", "Watts"],
-        "answer": "Decibels"
-    },
-    {
-        "question": "What is the unit of resistance?",
-        "options": ["Ohm", "Volt", "Ampere", "Watt"],
-        "answer": "Ohm"
-    },
-    {
-        "question": "Which device converts mechanical energy into electrical energy?",
-        "options": ["Motor", "Generator", "Transformer", "Diode"],
-        "answer": "Generator"
-    },
-    {
-        "question": "The mirror used in vehicles for rearview is typically a:",
-        "options": ["Concave mirror", "Convex mirror", "Plane mirror", "Parabolic mirror"],
-        "answer": "Convex mirror"
-    },
-    {
-        "question": "What is the speed of light in a vacuum (approx.)?",
-        "options": ["3 × 10⁶ m/s", "3 × 10⁸ m/s", "3 × 10¹⁰ m/s", "3 × 10⁵ m/s"],
-        "answer": "3 × 10⁸ m/s"
-    },
-    {
-        "question": "Which of the following is NOT a fundamental force of nature?",
-        "options": ["Gravitational force", "Electromagnetic force", "Nuclear force", "Frictional force"],
-        "answer": "Frictional force"
-    },
-    {
-        "question": "What is the SI unit of pressure?",
-        "options": ["Newton", "Pascal", "Joule", "Watt"],
-        "answer": "Pascal"
-    },
-    {
-        "question": "The process by which a liquid changes into a gas at its boiling point is called:",
-        "options": ["Evaporation", "Condensation", "Sublimation", "Boiling"],
-        "answer": "Boiling"
-    },
-    {
-        "question": "Which of the following is a non-renewable energy source?",
-        "options": ["Solar energy", "Wind energy", "Coal", "Hydropower"],
-        "answer": "Coal"
-    },
-    {
-        "question": "The law of conservation of energy states that energy cannot be:",
-        "options": ["Created", "Destroyed", "Created or destroyed", "Transformed"],
-        "answer": "Created or destroyed"
-    },
-    {
-        "question": "What is the focal length of a plane mirror?",
-        "options": ["Zero", "Infinite", "Equal to object distance", "Half the object distance"],
-        "answer": "Infinite"
-    },
-    {
-        "question": "Which of the following is a vector quantity?",
-        "options": ["Mass", "Time", "Temperature", "Displacement"],
-        "answer": "Displacement"
-    },
-    {
-        "question": "The amount of matter in an object is called its:",
-        "options": ["Weight", "Volume", "Mass", "Density"],
-        "answer": "Mass"
-    },
-    {
-        "question": "What is the unit of electric charge?",
-        "options": ["Ampere", "Volt", "Coulomb", "Ohm"],
-        "answer": "Coulomb"
-    },
-    {
-        "question": "Which phenomenon causes the sky to appear blue?",
-        "options": ["Reflection", "Refraction", "Scattering", "Dispersion"],
-        "answer": "Scattering"
-    },
-    {
-        "question": "The time period of a pendulum depends on its:",
-        "options": ["Mass", "Length", "Amplitude", "Material"],
-        "answer": "Length"
-    },
-    {
-        "question": "What is the unit of energy?",
-        "options": ["Newton", "Watt", "Joule", "Pascal"],
-        "answer": "Joule"
-    },
-    {
-        "question": "Which of the following is an insulator?",
-        "options": ["Silver", "Copper", "Rubber", "Aluminum"],
-        "answer": "Rubber"
-    },
-    {
-        "question": "The force that opposes the relative motion between two surfaces in contact is called:",
-        "options": ["Tension", "Friction", "Gravity", "Elasticity"],
-        "answer": "Friction"
-    },
-    {
-        "question": "What is the formula for Ohm's Law?",
-        "options": ["V = I × R", "P = V × I", "F = m × a", "W = F × d"],
-        "answer": "V = I × R"
-    },
-    {
-        "question": "Which type of lens is used to correct myopia (nearsightedness)?",
-        "options": ["Convex lens", "Concave lens", "Cylindrical lens", "Bifocal lens"],
-        "answer": "Concave lens"
-    },
-    {
-        "question": "The process of charging an object by rubbing it with another object is called:",
-        "options": ["Conduction", "Induction", "Friction", "Polarization"],
-        "answer": "Friction"
-    },
-    {
-        "question": "What is the unit of wavelength?",
-        "options": ["Hertz", "Meter", "Second", "Newton"],
-        "answer": "Meter"
-    },
-    {
-        "question": "Which of the following is NOT a part of an electric circuit?",
-        "options": ["Battery", "Switch", "Resistor", "Barometer"],
-        "answer": "Barometer"
-    },
-    {
-        "question": "The energy possessed by a body due to its motion is called:",
-        "options": ["Potential energy", "Kinetic energy", "Thermal energy", "Nuclear energy"],
-        "answer": "Kinetic energy"
-    },
-    {
-        "question": "Which gas is most abundant in Earth's atmosphere?",
-        "options": ["Oxygen", "Carbon dioxide", "Nitrogen", "Argon"],
-        "answer": "Nitrogen"
-    },
-    {
-        "question": "The phenomenon of splitting white light into its constituent colors is called:",
-        "options": ["Reflection", "Refraction", "Dispersion", "Diffraction"],
-        "answer": "Dispersion"
-    },
-    {
-        "question": "What is the unit of capacitance?",
-        "options": ["Farad", "Henry", "Tesla", "Weber"],
-        "answer": "Farad"
-    },
-    {
-        "question": "Which of the following is a greenhouse gas?",
-        "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Argon"],
-        "answer": "Carbon dioxide"
-    },
-    {
-        "question": "The SI unit of magnetic flux is:",
-        "options": ["Tesla", "Weber", "Henry", "Farad"],
-        "answer": "Weber"
-    },
-	{
-        "question": "What is the SI unit of electric charge?",
-        "options": ["Ampere", "Volt", "Coulomb", "Ohm"],
-        "answer": "Coulomb"
-    },
-    {
-        "question": "Which device is used to measure electric current?",
-        "options": ["Voltmeter", "Ammeter", "Galvanometer", "Ohmmeter"],
-        "answer": "Ammeter"
-    },
-    {
-        "question": "What is the resistance of an ideal conductor?",
-        "options": ["Zero", "Infinite", "1 ohm", "Depends on length"],
-        "answer": "Zero"
-    },
-    {
-        "question": "Which law relates current, voltage and resistance?",
-        "options": ["Newton's Law", "Ohm's Law", "Faraday's Law", "Coulomb's Law"],
-        "answer": "Ohm's Law"
-    },
-    {
-        "question": "What is the unit of electrical power?",
-        "options": ["Joule", "Watt", "Volt", "Ampere"],
-        "answer": "Watt"
-    },
-    {
-        "question": "Which material is the best conductor of electricity?",
-        "options": ["Copper", "Rubber", "Glass", "Wood"],
-        "answer": "Copper"
-    },
-    {
-        "question": "What happens to resistance when length of wire increases?",
-        "options": ["Increases", "Decreases", "Remains same", "Becomes zero"],
-        "answer": "Increases"
-    },
-    {
-        "question": "Which circuit has only one path for current?",
-        "options": ["Series", "Parallel", "Complex", "Mixed"],
-        "answer": "Series"
-    },
-    {
-        "question": "What is the function of a fuse?",
-        "options": ["Increase current", "Store charge", "Prevent overload", "Measure voltage"],
-        "answer": "Prevent overload"
-    },
-    {
-        "question": "Which instrument converts chemical energy to electrical energy?",
-        "options": ["Motor", "Generator", "Battery", "Transformer"],
-        "answer": "Battery"
-    },
-    {
-        "question": "What is the unit of magnetic field strength?",
-        "options": ["Tesla", "Weber", "Henry", "Farad"],
-        "answer": "Tesla"
-    },
-    {
-        "question": "Which rule is used to determine magnetic field direction around a conductor?",
-        "options": ["Right-hand rule", "Left-hand rule", "Fleming's rule", "Ohm's rule"],
-        "answer": "Right-hand rule"
-    },
-    {
-        "question": "What happens when like poles of magnets are brought close?",
-        "options": ["Attract", "Repel", "No effect", "Lose magnetism"],
-        "answer": "Repel"
-    },
-    {
-        "question": "Which device converts electrical energy to mechanical energy?",
-        "options": ["Generator", "Motor", "Transformer", "Battery"],
-        "answer": "Motor"
-    },
-    {
-        "question": "What is electromagnetic induction?",
-        "options": ["Current produces magnetism", "Magnetism produces current", "Charge produces light", "Heat produces current"],
-        "answer": "Magnetism produces current"
-    },
-    {
-        "question": "Which material is strongly attracted to magnets?",
-        "options": ["Aluminum", "Copper", "Iron", "Silver"],
-        "answer": "Iron"
-    },
-    {
-        "question": "What is the frequency of household AC supply in India?",
-        "options": ["50 Hz", "60 Hz", "100 Hz", "120 Hz"],
-        "answer": "50 Hz"
-    },
-    {
-        "question": "Which phenomenon causes compass needle to point north?",
-        "options": ["Earth's gravity", "Earth's magnetism", "Atmospheric pressure", "Electric field"],
-        "answer": "Earth's magnetism"
-    },
-    {
-        "question": "What is the speed of sound in air at 20°C?",
-        "options": ["330 m/s", "343 m/s", "500 m/s", "1000 m/s"],
-        "answer": "343 m/s"
-    },
-    {
-        "question": "Which characteristic determines loudness of sound?",
-        "options": ["Frequency", "Amplitude", "Wavelength", "Speed"],
-        "answer": "Amplitude"
-    },
-    {
-        "question": "What is the range of human hearing?",
-        "options": ["20 Hz - 20,000 Hz", "0 Hz - 100 Hz", "100 Hz - 1000 Hz", "Above 30,000 Hz"],
-        "answer": "20 Hz - 20,000 Hz"
-    },
-    {
-        "question": "Which phenomenon explains why sound is heard around corners?",
-        "options": ["Reflection", "Refraction", "Diffraction", "Echo"],
-        "answer": "Diffraction"
-    },
-    {
-        "question": "What is the unit of sound intensity?",
-        "options": ["Hertz", "Decibel", "Pascal", "Watt/m²"],
-        "answer": "Decibel"
-    },
-    {
-        "question": "Which factor doesn't affect speed of sound?",
-        "options": ["Temperature", "Medium density", "Humidity", "Amplitude"],
-        "answer": "Amplitude"
-    },
-    {
-        "question": "What is the study of sound called?",
-        "options": ["Optics", "Acoustics", "Mechanics", "Thermodynamics"],
-        "answer": "Acoustics"
-    },
-    {
-        "question": "Which wave property determines pitch?",
-        "options": ["Amplitude", "Frequency", "Wavelength", "Speed"],
-        "answer": "Frequency"
-    },
-    {
-        "question": "What is the SI unit of heat energy?",
-        "options": ["Kelvin", "Joule", "Calorie", "Watt"],
-        "answer": "Joule"
-    },
-    {
-        "question": "Which mode of heat transfer doesn't require medium?",
-        "options": ["Conduction", "Convection", "Radiation", "Diffusion"],
-        "answer": "Radiation"
-    },
-    {
-        "question": "What is the boiling point of water at standard pressure?",
-        "options": ["90°C", "100°C", "110°C", "120°C"],
-        "answer": "100°C"
-    },
-    {
-        "question": "Which material is the best conductor of heat?",
-        "options": ["Wood", "Plastic", "Mercury", "Silver"],
-        "answer": "Silver"
-    },
-    {
-        "question": "What is the process of gas turning to liquid called?",
-        "options": ["Evaporation", "Condensation", "Sublimation", "Freezing"],
-        "answer": "Condensation"
-    },
-    {
-        "question": "Which law states heat cannot flow from colder to hotter body?",
-        "options": ["Zeroth Law", "First Law", "Second Law", "Third Law"],
-        "answer": "Second Law"
-    },
-    {
-        "question": "What is absolute zero temperature?",
-        "options": ["0°C", "-100°C", "-273.15°C", "-373.15°C"],
-        "answer": "-273.15°C"
-    },
-    {
-        "question": "Which color absorbs maximum heat?",
-        "options": ["White", "Black", "Red", "Green"],
-        "answer": "Black"
-    },
-    {
-        "question": "What is the unit of specific heat capacity?",
-        "options": ["J/kg", "J/kg°C", "W/m°C", "cal/g"],
-        "answer": "J/kg°C"
-    },
-    {
-        "question": "Which phenomenon causes sea breeze?",
-        "options": ["Conduction", "Radiation", "Convection", "Evaporation"],
-        "answer": "Convection"
-    },
-    {
-        "question": "What is the main source of energy in stars?",
-        "options": ["Chemical reactions", "Nuclear fission", "Nuclear fusion", "Gravitational collapse"],
-        "answer": "Nuclear fusion"
-    },
-    {
-        "question": "Which mirror always forms virtual image?",
-        "options": ["Concave", "Convex", "Plane", "Parabolic"],
-        "answer": "Convex"
-    },
-    {
-        "question": "What is the unit of refractive index?",
-        "options": ["Dioptre", "No unit", "Meter", "Second"],
-        "answer": "No unit"
-    },
-    {
-        "question": "Which phenomenon causes rainbow formation?",
-        "options": ["Reflection", "Refraction", "Dispersion", "Total internal reflection"],
-        "answer": "Dispersion"
-    },
-    {
-        "question": "What is the speed of light in glass compared to vacuum?",
-        "options": ["Same", "Faster", "Slower", "Depends on color"],
-        "answer": "Slower"
-    },
-    {
-        "question": "Which lens is thicker at center than edges?",
-        "options": ["Concave", "Convex", "Plano-concave", "Biconcave"],
-        "answer": "Convex"
-    },
-    {
-        "question": "What is the SI unit of luminous intensity?",
-        "options": ["Lumen", "Lux", "Candela", "Watt"],
-        "answer": "Candela"
-    },
-    {
-        "question": "Which phenomenon explains optical fibers?",
-        "options": ["Reflection", "Refraction", "Dispersion", "Total internal reflection"],
-        "answer": "Total internal reflection"
-    },
-    {
-        "question": "What is the angle of incidence for critical angle?",
-        "options": ["0°", "45°", "90°", "Depends on media"],
-        "answer": "Depends on media"
-    },
-    {
-        "question": "Which radiation has highest frequency?",
-        "options": ["Radio waves", "Microwaves", "X-rays", "Infrared"],
-        "answer": "X-rays"
-    },
-    {
-        "question": "What is the unit of wavelength?",
-        "options": ["Hertz", "Meter", "Second", "Newton"],
-        "answer": "Meter"
-    },
-    {
-        "question": "Which electromagnetic wave is used in remote controls?",
-        "options": ["Radio waves", "Microwaves", "Infrared", "Ultraviolet"],
-        "answer": "Infrared"
-    },
-    {
-        "question": "What is the range of visible light wavelength?",
-        "options": ["100-200 nm", "400-700 nm", "1000-2000 nm", "1-10 mm"],
-        "answer": "400-700 nm"
-    },
-    {
-        "question": "Which phenomenon causes blue color of sky?",
-        "options": ["Reflection", "Refraction", "Scattering", "Dispersion"],
-        "answer": "Scattering"
-    },
-    {
-        "question": "What is the energy of a photon proportional to?",
-        "options": ["Amplitude", "Wavelength", "Frequency", "Speed"],
-        "answer": "Frequency"
-    },
-    {
-        "question": "Which radiation is used for cancer treatment?",
-        "options": ["X-rays", "Gamma rays", "UV rays", "Microwaves"],
-        "answer": "Gamma rays"
-    },
-    {
-        "question": "What is the principle behind nuclear reactors?",
-        "options": ["Nuclear fusion", "Nuclear fission", "Radioactive decay", "Pair production"],
-        "answer": "Nuclear fission"
-    },
-    {
-        "question": "Which particle has positive charge?",
-        "options": ["Electron", "Proton", "Neutron", "Photon"],
-        "answer": "Proton"
-    },
-    {
-        "question": "What is the atomic number?",
-        "options": ["Number of protons", "Number of neutrons", "Number of electrons", "Mass number"],
-        "answer": "Number of protons"
-    },
-    {
-        "question": "Which radiation is most penetrating?",
-        "options": ["Alpha", "Beta", "Gamma", "All same"],
-        "answer": "Gamma"
-    },
-    {
-        "question": "What is the half-life of a radioactive element?",
-        "options": ["Time for full decay", "Time for half decay", "Time for quarter decay", "Time for double decay"],
-        "answer": "Time for half decay"
-    },
-    {
-        "question": "Which device detects radioactive particles?",
-        "options": ["Electroscope", "Spectroscope", "Geiger counter", "Barometer"],
-        "answer": "Geiger counter"
-    },
-    {
-        "question": "What is the process of splitting heavy nuclei called?",
-        "options": ["Fusion", "Fission", "Decay", "Transmutation"],
-        "answer": "Fission"
-    },
-    {
-        "question": "Which scientist discovered radioactivity?",
-        "options": ["Rutherford", "Becquerel", "Curie", "Einstein"],
-        "answer": "Becquerel"
-    },
-    {
-        "question": "What is the charge on neutron?",
-        "options": ["+1", "-1", "0", "Depends on atom"],
-        "answer": "0"
-    },
-    {
-        "question": "Which radiation is deflected by electric field?",
-        "options": ["Alpha", "Beta", "Gamma", "All"],
-        "answer": "Beta"
-    },
-    {
-        "question": "What is the study of universe called?",
-        "options": ["Geology", "Astronomy", "Meteorology", "Oceanography"],
-        "answer": "Astronomy"
-    },
-    {
-        "question": "Which planet is known as Red Planet?",
-        "options": ["Venus", "Mars", "Jupiter", "Saturn"],
-        "answer": "Mars"
-    },
-    {
-        "question": "What is the closest star to Earth?",
-        "options": ["Proxima Centauri", "Alpha Centauri", "Sun", "Sirius"],
-        "answer": "Sun"
-    },
-    {
-        "question": "Which force keeps planets in orbit?",
-        "options": ["Electromagnetic", "Gravitational", "Nuclear", "Frictional"],
-        "answer": "Gravitational"
-    },
-    {
-        "question": "What is the time taken by light from Sun to reach Earth?",
-        "options": ["1 second", "8 minutes", "1 hour", "1 day"],
-        "answer": "8 minutes"
-    },
-    {
-        "question": "Which is the largest planet in solar system?",
-        "options": ["Earth", "Jupiter", "Saturn", "Neptune"],
-        "answer": "Jupiter"
-    },
-    {
-        "question": "What causes phases of Moon?",
-        "options": ["Earth's shadow", "Sun's position", "Moon's rotation", "Earth's rotation"],
-        "answer": "Sun's position"
-    },
-    {
-        "question": "Which phenomenon causes day and night?",
-        "options": ["Earth's revolution", "Earth's rotation", "Moon's revolution", "Sun's rotation"],
-        "answer": "Earth's rotation"
-    },
-    {
-        "question": "What is the shape of planetary orbits?",
-        "options": ["Circular", "Elliptical", "Parabolic", "Hyperbolic"],
-        "answer": "Elliptical"
-    },
-    {
-        "question": "Which device is used to observe distant objects?",
-        "options": ["Microscope", "Telescope", "Periscope", "Kaleidoscope"],
-        "answer": "Telescope"
-    },
-    {
-        "question": "What is the study of Earth's atmosphere called?",
-        "options": ["Geology", "Oceanography", "Meteorology", "Astronomy"],
-        "answer": "Meteorology"
-    },
-    {
-        "question": "Which layer protects Earth from UV rays?",
-        "options": ["Troposphere", "Stratosphere", "Ozone layer", "Ionosphere"],
-        "answer": "Ozone layer"
-    },
-    {
-        "question": "What is the main component of natural gas?",
-        "options": ["Methane", "Ethane", "Propane", "Butane"],
-        "answer": "Methane"
-    },
-    {
-        "question": "Which energy source is renewable?",
-        "options": ["Coal", "Petroleum", "Solar", "Natural gas"],
-        "answer": "Solar"
-    },
-    {
-        "question": "What is the principle behind hydel power?",
-        "options": ["Thermal energy", "Kinetic energy", "Potential energy", "Nuclear energy"],
-        "answer": "Potential energy"
-    },
-    {
-        "question": "Which device converts solar to electrical energy?",
-        "options": ["Dynamo", "Solar cell", "Transformer", "Generator"],
-        "answer": "Solar cell"
-    },
-    {
-        "question": "What is the main environmental concern of fossil fuels?",
-        "options": ["Noise pollution", "Water pollution", "Air pollution", "Land pollution"],
-        "answer": "Air pollution"
-    },
-    {
-        "question": "Which is the cleanest energy source?",
-        "options": ["Coal", "Nuclear", "Solar", "Natural gas"],
-        "answer": "Solar"
-    },
-    {
-        "question": "What is the greenhouse effect?",
-        "options": ["Cooling of Earth", "Trapping of heat", "Ozone depletion", "Acid rain formation"],
-        "answer": "Trapping of heat"
-    },
-    {
-        "question": "Which gas is primarily responsible for global warming?",
-        "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Argon"],
-        "answer": "Carbon dioxide"
-    },
-    {
-        "question": "What is sustainable development?",
-        "options": ["Using all resources", "Conserving for future", "Only using renewable", "Stopping development"],
-        "answer": "Conserving for future"
-    },
-    {
-        "question": "Which practice helps conserve energy?",
-        "options": ["Leaving lights on", "Using public transport", "Wasting water", "Burning trash"],
-        "answer": "Using public transport"
-    }
-	],
+                    { question: "What is the SI unit of force?", options: ["Joule", "Newton", "Watt", "Pascal"], answer: "Newton" }
+                ],
                 "Chemistry": [
                     { question: "What is the chemical symbol for gold?", options: ["Go", "Gd", "Au", "Ag"], answer: "Au" }
                 ],
